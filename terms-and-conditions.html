@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions | Bigmonks Technologies</title>
+  <meta name="title" content="Terms &amp; Conditions | Bigmonks Technologies" />
+  <meta name="description" content="Read the Terms and Conditions of Bigmonks Technologies. Understand your rights and obligations when using our website and services." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.bigmonks.com/terms-and-conditions" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bigmonks.com/terms-and-conditions" />
+  <meta property="og:title" content="Terms &amp; Conditions | Bigmonks Technologies" />
+  <meta property="og:description" content="Read the Terms and Conditions of Bigmonks Technologies. Understand your rights and obligations when using our website and services." />
+  <meta property="og:site_name" content="Bigmonks Technologies" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { dark: '#0c0c0c', gray: '#f3f4f6' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-900 bg-white font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- BEGIN: Navbar -->
+  <nav id="main-nav" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-max max-w-[95vw]">
+    <!-- DESKTOP Navbar Pill -->
+    <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300">
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo" class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+      <a href="contact" class="bg-black text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+    <!-- MOBILE Navbar Pill -->
+    <div class="md:hidden">
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo" class="h-6 w-auto object-contain" />
+        </a>
+        <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu" class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+          <span class="nav-burger-bar"></span>
+          <span class="nav-burger-bar"></span>
+          <span class="nav-burger-bar"></span>
+        </button>
+      </div>
+      <div id="mobile-nav-menu" class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col py-2">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Blogs</a>
+          <div class="px-5 py-3 border-t border-slate-100">
+            <a href="contact" class="w-full bg-black text-white font-medium text-sm rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+              <span>Get in touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- END: Navbar -->
+
+  <!-- BEGIN: Hero -->
+  <section class="pt-36 pb-16 px-6 bg-white border-b border-slate-100">
+    <div class="max-w-4xl mx-auto">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Legal</span>
+      <h1 class="text-5xl sm:text-6xl font-black tracking-tighter text-slate-900 leading-none mb-4">Terms &amp; Conditions</h1>
+      <p class="text-slate-500 text-sm">Last updated: <strong class="text-slate-700">August 17, 2026</strong></p>
+    </div>
+  </section>
+  <!-- END: Hero -->
+
+  <!-- BEGIN: Content -->
+  <main class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-12 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+        <p class="text-slate-600 text-sm leading-relaxed">
+          Please read these Terms and Conditions ("Terms") carefully before using the website <a href="https://www.bigmonks.com" class="text-slate-900 font-semibold underline underline-offset-2">www.bigmonks.com</a> or any services operated by <strong class="text-slate-900">Bigmonks Technologies</strong> ("Company", "we", "us", or "our"). By accessing or using our website and services, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access the site.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-slate-700 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">1. Agreement to Terms</h2>
+          <p>By accessing our website or engaging our services, you confirm that you are at least 18 years of age, have read and understood these Terms, and agree to be legally bound by them. If you are accessing the site on behalf of an organisation, you represent that you have the authority to bind that organisation to these Terms.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">2. Our Services</h2>
+          <p class="mb-3">Bigmonks Technologies provides a range of IT consulting and software development services including, but not limited to:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Mobile and web application development</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>UI/UX design and user research</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Cloud architecture and infrastructure services</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>AI &amp; Machine Learning solutions</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>IT training, internship programs, and digital transformation consulting</span></li>
+          </ul>
+          <p class="mt-4">All services are subject to a separate written agreement or Statement of Work (SOW) agreed upon between Bigmonks Technologies and the client.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">3. Intellectual Property</h2>
+          <p class="mb-3">The website and its original content, features, and functionality are and will remain the exclusive property of Bigmonks Technologies. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Bigmonks Technologies.</p>
+          <p>Work product created specifically for a client under a paid engagement is subject to the ownership terms defined in the applicable project agreement or SOW. In the absence of such an agreement, all intellectual property created by Bigmonks Technologies remains the property of Bigmonks Technologies until full payment is received.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">4. User Responsibilities</h2>
+          <p class="mb-3">When using our website and services, you agree not to:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Use the site in any way that violates any applicable national or international law or regulation.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Transmit any unsolicited or unauthorised advertising or promotional material, or any other form of spam.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Attempt to gain unauthorised access to any portion of the site or any systems connected to it.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the site.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Use the site to copy, reproduce, or reverse-engineer any part of our software or services.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">5. Payment &amp; Billing</h2>
+          <p class="mb-3">For paid services:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Payment terms are specified in the applicable project agreement or invoice. Unless otherwise agreed, an initial deposit may be required before work commences.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>All fees are non-refundable unless explicitly stated in the project agreement.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Late payments may attract interest at the rate of 1.5% per month or the maximum rate permitted by law, whichever is less.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Prices are quoted in the currency specified on the invoice and do not include applicable taxes unless stated.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">6. Confidentiality</h2>
+          <p>Each party agrees to keep confidential all non-public information of the other party that is disclosed in connection with the services, and to use such information solely for the purpose of performing under any applicable agreement. This obligation does not apply to information that becomes publicly available through no breach of this agreement, or that is independently developed by the receiving party.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">7. Disclaimer of Warranties</h2>
+          <p class="mb-3">Our website and services are provided on an <strong class="text-slate-900">"AS IS" and "AS AVAILABLE"</strong> basis without any warranties of any kind, either express or implied, including but not limited to:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Implied warranties of merchantability or fitness for a particular purpose.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Any warranty that the site will be uninterrupted, error-free, or free of viruses or other harmful components.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Any warranty regarding the accuracy or completeness of content on the site.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">8. Limitation of Liability</h2>
+          <p>To the fullest extent permitted by applicable law, Bigmonks Technologies, its directors, employees, partners, agents, suppliers, or affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, or goodwill, arising out of or in connection with your access to or use of (or inability to access or use) our website or services, even if we have been advised of the possibility of such damages.</p>
+          <p class="mt-3">Our total liability for any claims under these Terms shall not exceed the total amount paid by you to Bigmonks Technologies in the three (3) months preceding the event giving rise to such claim.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">9. Termination</h2>
+          <p>We may terminate or suspend your access to our website or services immediately, without prior notice or liability, for any reason, including if you breach these Terms. Upon termination, your right to use the site and services will immediately cease. All provisions of these Terms which by their nature should survive termination shall survive, including intellectual property provisions, warranty disclaimers, and limitations of liability.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">10. Links to Third-Party Sites</h2>
+          <p>Our website may contain links to third-party websites that are not owned or controlled by Bigmonks Technologies. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party websites. We strongly advise you to read the terms and privacy policy of any third-party site that you visit.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">11. Governing Law &amp; Jurisdiction</h2>
+          <p class="mb-3">These Terms shall be governed by and construed in accordance with the laws applicable based on the primary place of service delivery:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">India:</strong> The laws of the Republic of India, and the courts of Ernakulam, Kerala shall have jurisdiction.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Canada:</strong> The laws of the Province of Nova Scotia, and the courts of Nova Scotia shall have jurisdiction.</span></li>
+          </ul>
+          <p class="mt-4">Any disputes shall first be attempted to be resolved through good-faith negotiation. If unresolved within 30 days, the dispute shall be submitted to binding arbitration.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">12. Changes to These Terms</h2>
+          <p>We reserve the right to modify or replace these Terms at any time. We will notify you of significant changes by updating the "Last updated" date at the top of this page. Your continued use of our website or services after any changes constitutes your acceptance of the new Terms. If you do not agree to the new Terms, please stop using our site and services.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">13. Contact Us</h2>
+          <p class="mb-6">If you have any questions about these Terms and Conditions, please contact us:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-3">India HQ</p>
+              <p class="font-bold text-slate-900 text-sm">Bigmonks Technologies</p>
+              <p class="text-slate-600 text-sm mt-1">Kakkanad, Ernakulam,<br>Kerala – 682037, India</p>
+              <a href="tel:+918848806406" class="block text-slate-900 font-semibold text-sm mt-3 hover:text-slate-600 transition-colors">+91 88488 06406</a>
+              <a href="mailto:info@bigmonks.com" class="block text-slate-900 font-semibold text-sm mt-1 hover:text-slate-600 transition-colors">info@bigmonks.com</a>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-3">Canada Hub</p>
+              <p class="font-bold text-slate-900 text-sm">Bigmonks Technologies</p>
+              <p class="text-slate-600 text-sm mt-1">576 Prince St Unit 1,<br>Truro, NS B2N 1G3, Canada</p>
+              <a href="tel:+19027004454" class="block text-slate-900 font-semibold text-sm mt-3 hover:text-slate-600 transition-colors">+1 902-700-4454</a>
+              <a href="mailto:info@bigmonks.com" class="block text-slate-900 font-semibold text-sm mt-1 hover:text-slate-600 transition-colors">info@bigmonks.com</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <!-- END: Content -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="pt-16 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="relative pt-12 border-t border-slate-200 overflow-hidden px-2 sm:px-4">
+        <div class="relative z-20 flex flex-col sm:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 gap-3">
+          <a href="privacy-policy" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Privacy Policy</a>
+          <span class="text-slate-400">BIGMONKS TECHNOLOGIES &bull; KERALA, INDIA &bull; CANADA</span>
+          <a href="terms-and-conditions" class="text-slate-950 font-extrabold py-1">Terms &amp; Conditions</a>
+        </div>
+        <p class="huge-title text-slate-900 text-[4rem] sm:text-[9.5rem] md:text-[13rem] lg:text-[15.5rem] -mb-2 sm:-mb-6 md:-mb-8 leading-[0.85] tracking-tight select-none pointer-events-none block text-center w-full max-w-full -translate-x-2 sm:-translate-x-4 md:-translate-x-6">BIGMONKS</p>
+      </div>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+  <script src="app.js"></script>
+</body>
+</html>

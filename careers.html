@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title>Careers &amp; Open Positions | Join Bigmonks Technologies</title>
+  <meta name="title" content="Careers &amp; Open Positions | Join Bigmonks Technologies" />
+  <meta name="description"
+    content="Explore 50+ open software engineering, Oracle EBS, AI/ML, Cloud Architecture, Mobile, and ERP career opportunities at Bigmonks Technologies in Kochi, India &amp; Canada Hub." />
+  <meta name="keywords"
+    content="Bigmonks Careers, Software Jobs Kochi India, Tech Careers Canada, Oracle EBS Jobs, Fullstack Developer Roles, AI Engineer Jobs, DevOps Careers" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.bigmonks.com/careers" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bigmonks.com/careers" />
+  <meta property="og:title" content="Engineer High-Impact Products With Us | Bigmonks Careers" />
+  <meta property="og:description"
+    content="We are actively hiring experienced architects, full-stack developers, AI pioneers, and early career engineers in Kochi, India &amp; Canada." />
+  <meta property="og:image" content="https://www.bigmonks.com/images/hero_widescreen.png" />
+  <meta property="og:site_name" content="Bigmonks Technologies" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Engineer High-Impact Products With Us | Bigmonks Careers" />
+  <meta name="twitter:description"
+    content="We are actively hiring experienced architects, full-stack developers, AI pioneers, and early career engineers in Kochi, India &amp; Canada." />
+  <meta name="twitter:image" content="https://www.bigmonks.com/images/hero_widescreen.png" />
+
+  <!-- Mobile Browser Theme & Geo Meta Tags -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="geo.region" content="IN-KL" />
+  <meta name="geo.placename" content="Kochi, Ernakulam, Kerala, India" />
+
+  <!-- Schema.org JSON-LD Structured Data for Careers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Bigmonks Open Engineering Positions",
+    "url": "https://www.bigmonks.com/careers",
+    "numberOfItems": 48,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "JobPosting",
+          "title": "Oracle EBS Functional Finance Consultant",
+          "hiringOrganization": { "@type": "Organization", "name": "Bigmonks Technologies" },
+          "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Kochi", "addressCountry": "IN" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "JobPosting",
+          "title": "Senior AI/ML Engineer",
+          "hiringOrganization": { "@type": "Organization", "name": "Bigmonks Technologies" },
+          "jobLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Kochi", "addressCountry": "IN" } }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-sans antialiased text-slate-800 bg-white selection:bg-slate-900 selection:text-white">
+
+  <!-- BEGIN: Toast Notification Element -->
+  <div id="toast-notification"
+    class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white text-xs font-semibold px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-3 border border-white/10">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span id="toast-message">Notification message</span>
+  </div>
+  <!-- END: Toast Notification Element -->
+
+  <!-- BEGIN: Job Application Popup Modal Box Overlay -->
+  <div id="job-apply-modal"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="job-apply-modal-box"
+      class="bg-white rounded-[2.5rem] max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200 transform scale-95 transition-all duration-300 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close X Button -->
+      <button onclick="closeJobApplyModal()"
+        class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 text-slate-700 hover:bg-black hover:text-white flex items-center justify-center transition-all cursor-pointer"
+        aria-label="Close modal">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Modal Title & Location -->
+      <div class="mb-6 pr-8">
+        <span id="modal-job-location-badge" class="pill-badge bg-black text-white text-[10px] font-bold uppercase mb-2 inline-flex">
+          KOCHI, INDIA
+        </span>
+        <h2 id="modal-job-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-snug">
+          Apply for Position
+        </h2>
+        <p class="text-xs text-slate-500 mt-1">Submit your details and CV link to our technical hiring squad.</p>
+      </div>
+
+      <!-- Modal Application Form -->
+      <form onsubmit="handleJobApplyModalSubmit(event)" class="space-y-4 text-left">
+        <input type="hidden" id="modal-position-hidden" />
+        <input type="hidden" id="modal-location-hidden" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">First Name *</label>
+            <input type="text" id="modal-first-name" required placeholder="John"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">Last Name *</label>
+            <input type="text" id="modal-last-name" required placeholder="Doe"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">Email Address *</label>
+            <input type="email" id="modal-email" required placeholder="john@example.com"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">Phone Number *</label>
+            <input type="tel" id="modal-phone" required placeholder="+91 98765 43210"
+              class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">Resume / CV Link *</label>
+          <input type="url" id="modal-cv-link" required placeholder="Google Drive, Dropbox, or LinkedIn PDF URL"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 mb-1">Experience &amp; Core Stack *</label>
+          <textarea rows="3" id="modal-cover-note" required placeholder="Highlight your years of experience, core technologies, and notice period..."
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-slate-900 bg-slate-50/50 resize-none"></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit"
+            class="w-full bg-slate-900 hover:bg-black text-white font-extrabold text-xs py-3.5 px-6 rounded-full transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
+            <span>Send Application via Mail</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- END: Job Application Popup Modal Box Overlay -->
+
+  <!-- BEGIN: Centered Floating Replica Pill Navbar Header -->
+  <nav class="fixed top-6 left-0 right-0 z-40 flex justify-center px-4 md:px-6 pointer-events-none" id="main-nav" data-purpose="sticky-header">
+    
+    <!-- DESKTOP Replica Navbar Pill (md and up) -->
+    <div
+      class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300 pointer-events-auto">
+      
+      <!-- Brand Logo Left -->
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo"
+          class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <!-- Center Navigation Links -->
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+
+      <!-- Right CTA Button (Get in touch) -->
+      <a href="contact"
+        class="bg-black hover:bg-slate-900 text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+
+    <!-- MOBILE Replica Navbar Pill (below md) -->
+    <div class="md:hidden w-full max-w-sm pointer-events-auto">
+      <!-- Closed state bar: logo + burger -->
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo"
+            class="h-6 w-auto object-contain" />
+        </a>
+
+        <div class="flex items-center gap-3">
+          <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu"
+            class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-nav-menu"
+        class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col gap-4 text-slate-900 text-sm py-4 px-5">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Blogs</a>
+          <a href="careers" onclick="closeMobileNav()" class="nav-link mobile-nav-item nav-active">Careers</a>
+        </div>
+        <div class="px-5 py-3 border-t border-slate-100">
+          <a href="contact"
+            class="w-full bg-black text-white text-xs font-medium rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+            <span>Get in touch</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+  <!-- END: Centered Floating Replica Pill Navbar Header -->
+
+  <!-- BEGIN: Careers Hero Section -->
+  <section class="bg-white pt-32 pb-10 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-xs font-semibold text-slate-400 mb-3 tracking-wide flex items-center gap-1.5">
+        <a href="./" class="hover:text-slate-900 transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-slate-900 font-bold">Careers</span>
+      </div>
+      
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 pt-2">
+        <div class="max-w-3xl space-y-4">
+          <div class="pill-badge bg-slate-100 text-slate-900 border-slate-200 uppercase tracking-widest font-bold text-xs inline-flex items-center gap-2">
+         
+            GLOBAL CAREERS &bull; KOCHI, INDIA &amp; CANADA HUB
+          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tighter uppercase leading-tight">
+            ENGINEER HIGH-IMPACT <br /> PRODUCTS WITH US
+          </h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+            Join Bigmonks Technologies. We are actively hiring experienced architects, full-stack engineers, AI pioneers, and early career tech enthusiasts in Kochi, India &amp; Canada.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a href="#positions-container" class="bg-black hover:bg-slate-900 text-white font-bold text-sm px-6 py-3.5 rounded-full transition-all shadow-md">
+            Explore Open Roles &darr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Careers Hero Section -->
+
+  <!-- BEGIN: Interactive Filter & Search Bar Section -->
+  <section id="positions-container" class="py-8 px-6 max-w-7xl mx-auto border-t border-slate-100">
+    
+    <!-- Track Selector Tabs: Experienced Professionals vs Early Careers -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+      <div class="flex items-center gap-2 bg-slate-100 p-1.5 rounded-full border border-slate-200">
+        <button id="tab-exp" onclick="switchTrack('exp')"
+          class="track-btn px-6 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all bg-black text-white shadow-sm cursor-pointer">
+          Experienced Professionals
+        </button>
+        <button id="tab-early" onclick="switchTrack('early')"
+          class="track-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-all cursor-pointer">
+          Early Careers
+        </button>
+      </div>
+
+      <!-- Real-time Search Box -->
+      <div class="relative w-full md:w-80">
+        <input type="text" id="job-search-input" onkeyup="filterJobs()" placeholder="Search position or location..."
+          class="w-full pl-10 pr-4 py-2.5 rounded-full border border-slate-200 text-xs text-slate-900 font-medium focus:outline-none focus:border-slate-900 bg-slate-50/50" />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Active Track Counter Headline -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 id="track-headline" class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+        Experienced Professionals
+      </h2>
+      <span id="job-count" class="text-xs font-mono font-bold text-slate-400 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+        Loading...
+      </span>
+    </div>
+
+    <!-- Grid Container for Job Cards -->
+    <div id="job-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamically Rendered Job Cards -->
+    </div>
+  </section>
+  <!-- END: Open Positions Section -->
+
+  <!-- BEGIN: Site Footer Section -->
+  <footer class="pt-24 px-6 bg-white border-t border-slate-100" data-purpose="main-footer">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+
+        <!-- Footer Image Card -->
+        <div class="lg:col-span-3">
+          <div class="relative rounded-[2rem] overflow-hidden group shadow-lg">
+            <img alt="Bigmonks Global Engineering Hub"
+              class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
+              src="images/real_future_logistics.png" />
+            <div
+              class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white p-8 text-center backdrop-blur-none group-hover:backdrop-blur-xs transition-all">
+              
+              <button onclick="openQuoteModal()" aria-label="Explore More"
+                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-900 transform group-hover:rotate-45 hover:bg-black hover:text-white transition-all shadow-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Main Pitch -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-10 text-slate-900">
+            Building the future of digital software.
+          </h2>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">WEB &amp; MOBILE APPS</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">CLOUD &amp; AI ARCHITECTURE</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">ENTERPRISE SOFTWARE</div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm font-bold text-slate-600 text-center sm:text-left">
+            <!-- Location -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Locations</p>
+              <div class="space-y-2 text-xs text-slate-700 leading-relaxed font-normal">
+                <div>
+                  <strong class="text-slate-900 font-bold block">India HQ:</strong>
+                  Kakkanad, Ernakulam, Kerala - 682037
+                </div>
+                <div>
+                  <strong class="text-slate-900 font-bold block">Canada Hub:</strong>
+                  576 Prince St Unit 1, Truro, NS B2N 1G3
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Contact</p>
+              <div class="space-y-1 font-mono text-xs font-semibold">
+                <a href="tel:+918848806406" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">IN:</span> +91 88488 06406</a>
+                <a href="tel:+19027004454" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">CA:</span> +1 902-700-4454</a>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Connect</p>
+              <a href="mailto:info@bigmonks.com" class="text-slate-900 hover:text-slate-600 block font-mono text-sm transition-colors font-bold">info@bigmonks.com</a>
+              <a href="https://www.bigmonks.com" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-600 block font-mono text-xs mt-1 transition-colors">www.bigmonks.com</a>
+              <a href="careers" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:text-slate-600 mt-2.5 transition-colors group">
+                <span>Careers</span>
+                <span class="bg-black text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full group-hover:bg-slate-800 transition-colors">We're Hiring</span>
+              </a>
+              <p class="text-[11px] text-slate-400 font-normal mt-3">&copy; 2026 Bigmonks Technologies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Social Links -->
+        <div class="lg:col-span-3 flex flex-col gap-3">
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://x.com/BigmonksTech" target="_blank" rel="noopener noreferrer">X (Twitter) <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.instagram.com/bigmonks_technologies/" target="_blank" rel="noopener noreferrer">Instagram <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.linkedin.com/company/bigmonks-technologies01" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+
+          <div class="mt-8 flex justify-center lg:justify-end">
+            <button onclick="scrollToTop()"
+              class="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-xl hover:bg-black transition-all hover:scale-110"
+              title="Back to Top" aria-label="Back to Top">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Watermark Section -->
+      <div class="border-t border-slate-100 pt-8 pb-16 flex flex-col items-center justify-center text-center">
+        <h1 class="text-[14vw] font-black leading-none tracking-tighter text-slate-200/60 select-none uppercase">
+          BIGMONKS
+        </h1>
+        <div class="flex flex-wrap justify-center items-center gap-6 mt-6 text-xs text-slate-600 font-bold uppercase tracking-wider">
+          <a href="privacy-policy" class="hover:text-slate-900 transition-colors">Privacy Policy</a>
+          <span>&bull;</span>
+          <span>&copy; 2026 BIGMONKS TECHNOLOGIES</span>
+          <span>&bull;</span>
+          <span>KAKKANAD, KOCHI, INDIA HQ</span>
+          <span>&bull;</span>
+          <span>TRURO, CANADA HUB</span>
+          <span>&bull;</span>
+          <a href="terms-and-conditions" class="hover:text-slate-900 transition-colors">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- END: Site Footer Section -->
+
+  <!-- Custom Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // Experienced Professionals Job Positions Dataset (Sanitized to Kochi, India & Canada Hub only)
+    const expJobs = [
+      { title: "Oracle EBS Functional Finance Consultant", loc: "Kochi, India" },
+      { title: "Oracle EBS SCM Techno-Functional Consultant", loc: "Kochi, India" },
+      { title: "DotNet Fullstack Developer PLM", loc: "Canada Hub" },
+      { title: "DevOps Engineer", loc: "Kochi, India" },
+      { title: "WMS Analyst", loc: "Canada Hub" },
+      { title: "WMS Analyst", loc: "Canada Hub" },
+      { title: "Senior Java Technical Lead SRE", loc: "Kochi, India" },
+      { title: "CDN Engineer", loc: "Kochi, India" },
+      { title: "WMS Lead", loc: "Canada Hub" },
+      { title: "O9 Engineer", loc: "Kochi, India" },
+      { title: "FDM4 Developer", loc: "Kochi, India" },
+      { title: "Level 2 Support Analyst", loc: "Kochi, India" },
+      { title: "FlexPLM Support Engineer", loc: "Canada Hub" },
+      { title: "Senior AI/ML Engineer", loc: "Kochi, India" },
+      { title: "WMS Support High Jump L1 L2", loc: "Kochi, India" },
+      { title: "AI Engineer", loc: "Kochi, India" },
+      { title: "Shopify Developer", loc: "Canada Hub" },
+      { title: "Databricks Admin AWS", loc: "Kochi, India" },
+      { title: "Oracle EBS SCM Offshore Lead", loc: "Kochi, India" },
+      { title: "Java SRE Technical Lead", loc: "Kochi, India" },
+      { title: "Sr. Engineer AI ML", loc: "Kochi, India" },
+      { title: "ERP Architect", loc: "Canada Hub" },
+      { title: "WMS Architect", loc: "Canada Hub" },
+      { title: "Business Systems Analyst ERP", loc: "Canada Hub" },
+      { title: "FDM4 L3 Analyst", loc: "Canada Hub" },
+      { title: "Senior Engineer AI", loc: "Kochi, India" },
+      { title: "NI QE (Neural Intelligence Quality Engineer)", loc: "Kochi, India" },
+      { title: "OMS Architect", loc: "Kochi, India" },
+      { title: "OMS Senior Developer", loc: "Kochi, India" },
+      { title: "Senior AI/ML Engineer [R&D]", loc: "Kochi, India" },
+      { title: "Technical Analyst Oracle RMS", loc: "Kochi, India" },
+      { title: "Multi-Platform Database Administrator (Oracle EBS, PostgreSQL & Exadata)", loc: "Kochi, India" },
+      { title: "Lead Java Spring Boot Microservices", loc: "Kochi, India" },
+      { title: "Senior Manager Sales", loc: "Canada Hub" },
+      { title: "Senior Manager Sales", loc: "Canada Hub" },
+      { title: "DBA Lead", loc: "Kochi, India" },
+      { title: "Client Partner Strategic Accounts Retail", loc: "Canada Hub" },
+      { title: "MuleSoft Lead Engineer", loc: "Kochi, India" },
+      { title: "Boomi Lead Engineer", loc: "Kochi, India" },
+      { title: "Senior Technical Developer", loc: "Canada Hub" },
+      { title: "Technical Service Manager", loc: "Kochi, India" },
+      { title: "Technical Consultant", loc: "Canada Hub" },
+      { title: "Research Leader", loc: "Kochi, India" },
+      { title: "Client Executive", loc: "Canada Hub" },
+      { title: "Lead Consultant", loc: "Canada Hub" },
+      { title: "OMS Lead", loc: "Kochi, India" },
+      { title: "BY OMS Senior Developer", loc: "Kochi, India" },
+      { title: "BY OMS Developer", loc: "Kochi, India" }
+    ];
+
+    // Early Careers Job Positions Dataset
+    const earlyJobs = [
+      { title: "Graduate Software Engineer Trainee (AI & Cloud)", loc: "Kochi, India" },
+      { title: "Associate Full-Stack Developer", loc: "Kochi, India" },
+      { title: "Junior QA Automation Engineer", loc: "Kochi, India" },
+      { title: "Junior DevOps & Cloud Associate", loc: "Kochi, India" }
+    ];
+
+    let currentTrack = 'exp';
+
+    function renderJobs(jobsList) {
+      const grid = document.getElementById('job-cards-grid');
+      const countEl = document.getElementById('job-count');
+      grid.innerHTML = '';
+      
+      countEl.innerText = `${jobsList.length} Open Roles`;
+
+      if (jobsList.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-400">
+            <p class="text-sm font-semibold">No matching positions found.</p>
+            <p class="text-xs mt-1">Try refining your search terms.</p>
+          </div>
+        `;
+        return;
+      }
+
+      jobsList.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm flex flex-col justify-between hover:shadow-xl hover:border-slate-400 transition-all group duration-300';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold border-slate-200 uppercase">${currentTrack === 'exp' ? 'EXPERIENCED' : 'EARLY CAREER'}</span>
+              <span class="text-[11px] font-mono text-slate-500 font-semibold flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 1.2a8 8 0 0 1 8 8c0 7.3-8 11.8-8 11.8z" />
+                  <circle cx="12" cy="9.2" r="3" />
+                </svg>
+                ${job.loc}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-6 group-hover:text-slate-600 transition-colors leading-snug">
+              ${job.title}
+            </h3>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+            <span class="text-[11px] font-mono text-slate-400">Full-Time</span>
+            <button onclick="openJobApplyModal('${job.title.replace(/'/g, "\\'")}', '${job.loc.replace(/'/g, "\\'")}')" 
+              class="bg-black hover:bg-slate-800 text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 transition-all cursor-pointer">
+              <span>Apply</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function switchTrack(track) {
+      currentTrack = track;
+      const tabExp = document.getElementById('tab-exp');
+      const tabEarly = document.getElementById('tab-early');
+      const headline = document.getElementById('track-headline');
+      const searchInput = document.getElementById('job-search-input');
+      searchInput.value = '';
+
+      if (track === 'exp') {
+        tabExp.className = 'track-btn px-6 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all bg-black text-white shadow-sm cursor-pointer';
+        tabEarly.className = 'track-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+        headline.innerText = 'Experienced Professionals';
+        renderJobs(expJobs);
+      } else {
+        tabEarly.className = 'track-btn px-6 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all bg-black text-white shadow-sm cursor-pointer';
+        tabExp.className = 'track-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+        headline.innerText = 'Early Careers';
+        renderJobs(earlyJobs);
+      }
+    }
+
+    function filterJobs() {
+      const query = document.getElementById('job-search-input').value.toLowerCase().trim();
+      const dataset = currentTrack === 'exp' ? expJobs : earlyJobs;
+      const filtered = dataset.filter(job => 
+        job.title.toLowerCase().includes(query) || job.loc.toLowerCase().includes(query)
+      );
+      renderJobs(filtered);
+    }
+
+    function openJobApplyModal(title, loc) {
+      const modal = document.getElementById('job-apply-modal');
+      const box = document.getElementById('job-apply-modal-box');
+      const titleEl = document.getElementById('modal-job-title');
+      const locBadge = document.getElementById('modal-job-location-badge');
+      const positionHidden = document.getElementById('modal-position-hidden');
+      const locationHidden = document.getElementById('modal-location-hidden');
+
+      titleEl.innerText = `Apply for ${title}`;
+      locBadge.innerText = loc;
+      positionHidden.value = title;
+      locationHidden.value = loc;
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      box.classList.remove('scale-95');
+      box.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeJobApplyModal() {
+      const modal = document.getElementById('job-apply-modal');
+      const box = document.getElementById('job-apply-modal-box');
+
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-100');
+      box.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    function handleJobApplyModalSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('modal-position-hidden')?.value || 'Engineering Role';
+      const loc = document.getElementById('modal-location-hidden')?.value || 'Bigmonks Office';
+      const firstName = document.getElementById('modal-first-name')?.value || '';
+      const lastName = document.getElementById('modal-last-name')?.value || '';
+      const email = document.getElementById('modal-email')?.value || '';
+      const phone = document.getElementById('modal-phone')?.value || '';
+      const cvLink = document.getElementById('modal-cv-link')?.value || '';
+      const coverNote = document.getElementById('modal-cover-note')?.value || '';
+
+      const subject = encodeURIComponent(`Job Application: ${title} [${loc}] - ${firstName} ${lastName}`.trim());
+      const bodyText = `APPLICANT DETAILS:\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nPosition: ${title} (${loc})\n\nRESUME / CV LINK:\n${cvLink}\n\nEXPERIENCE & SKILLS:\n${coverNote}`;
+      const body = encodeURIComponent(bodyText);
+
+      const mailtoUrl = `mailto:info@bigmonks.com?subject=${subject}&body=${body}`;
+
+      try {
+        window.location.href = mailtoUrl;
+      } catch (err) {
+        const link = document.createElement('a');
+        link.href = mailtoUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      closeJobApplyModal();
+      if (typeof showToast === 'function') {
+        showToast('Opening your email app to send your application...');
+      }
+      e.target.reset();
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      renderJobs(expJobs);
+    });
+  </script>
+</body>
+
+</html>

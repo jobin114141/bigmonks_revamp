@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title>Who We Are | About Us &amp; Global Hubs | Bigmonks Technologies</title>
+  <meta name="title" content="Who We Are | About Us &amp; Global Hubs | Bigmonks Technologies" />
+  <meta name="description"
+    content="Learn about Bigmonks Technologies - Founded in 2009, engineered with zero-compromise discipline across Kakkanad, Kochi, India HQ &amp; Truro, Canada Hub." />
+  <meta name="keywords"
+    content="About Bigmonks Technologies, Software Engineering Culture, Kakkanad Kochi R&D HQ, Truro Canada Hub, Product Craftsmanship, Global Agile Delivery" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.bigmonks.com/who-we-are" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bigmonks.com/who-we-are" />
+  <meta property="og:title" content="Who We Are | Product Craftsmanship &amp; Engineering DNA" />
+  <meta property="og:description"
+    content="Discover our origin story from a kitchen hub to a global engineering enterprise with offices in India &amp; Canada." />
+  <meta property="og:image" content="https://www.bigmonks.com/images/hero_widescreen.png" />
+  <meta property="og:site_name" content="Bigmonks Technologies" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Who We Are | Product Craftsmanship &amp; Engineering DNA" />
+  <meta name="twitter:description"
+    content="Discover our origin story from a kitchen hub to a global engineering enterprise with offices in India &amp; Canada." />
+  <meta name="twitter:image" content="https://www.bigmonks.com/images/hero_widescreen.png" />
+
+  <!-- Mobile Browser Theme & Geo Meta Tags -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="geo.region" content="IN-KL" />
+  <meta name="geo.placename" content="Kochi, Ernakulam, Kerala, India" />
+
+  <!-- Schema.org JSON-LD Structured Data for AboutPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Who We Are - Bigmonks Technologies",
+    "url": "https://www.bigmonks.com/who-we-are",
+    "description": "Origin story and global engineering hub breakdown of Bigmonks Technologies in Kakkanad, Kochi, India & Truro, Canada.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Bigmonks Technologies",
+      "foundingDate": "2009",
+      "url": "https://www.bigmonks.com/"
+    }
+  }
+  </script>
+
+  <!-- Favicon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0c0c0c',
+              gray: '#f3f4f6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-900 bg-[#f3f4f6] font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- BEGIN: Centered Floating Replica Pill Navbar Header -->
+  <nav id="main-nav"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-max max-w-[95vw]">
+
+    <!-- DESKTOP Replica Navbar Pill (md and up) -->
+    <div
+      class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300">
+      
+      <!-- Brand Logo Left -->
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo"
+          class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <!-- Center Navigation Links -->
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link nav-active whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+
+      <!-- Right CTA Button -->
+      <a href="contact"
+        class="bg-black hover:bg-black text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+
+    <!-- MOBILE Replica Navbar Pill (below md) -->
+    <div class="md:hidden">
+      <!-- Closed state bar: logo + CTA + burger -->
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo"
+            class="h-6 w-auto object-contain" />
+        </a>
+
+        <div class="flex items-center gap-3">
+          <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu"
+            class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-nav-menu"
+        class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col gap-4 text-slate-900 text-sm py-4 px-5">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item nav-active">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Blogs</a>
+        </div>
+        <div class="px-5 py-3 border-t border-slate-100">
+            <button onclick="openQuoteModal(); closeMobileNav();"
+              class="w-full bg-[#2d2d2d] hover:bg-black text-white font-medium text-sm rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+              <span>Get in touch</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+  <!-- END: Centered Floating Replica Pill Navbar Header -->
+
+
+
+  <!-- BEGIN: Hero Section with Video Showcase -->
+  <section class="w-full bg-[#ffffff] pt-24 sm:pt-36 pb-8 sm:pb-20 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto w-full">
+      <div class="w-full h-auto aspect-video sm:h-[55vh] md:h-[60vh] lg:h-[65vh] overflow-hidden rounded-2xl sm:rounded-3xl">
+        <video 
+          id="hero-bg-video"
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          class="w-full h-full object-cover rounded-2xl sm:rounded-3xl">
+          <source src="images/bigmonks_video.mp4" type="video/mp4" />
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div>
+  </section>
+  <!-- END: Hero Section with Video Showcase -->
+
+  <!-- BEGIN: Engineering DNA & Origin Story Section -->
+  <section class="py-20 px-6 max-w-7xl mx-auto">
+    <div class="space-y-12">
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 border-b border-slate-200 pb-10">
+        <div>
+          <div class="pill-badge mb-4 uppercase tracking-widest font-bold text-slate-600 border-slate-300">
+            OUR CORE DNA
+          </div>
+          <h2 class="text-4xl md:text-5xl font-extrabold tracking-tighter leading-tight text-slate-900">
+            How we engineer &amp; deliver value.
+          </h2>
+        </div>
+        <p class="text-slate-500 max-w-sm text-sm leading-relaxed font-normal">
+          Built on zero-compromise technical discipline, cross-border agile teams, and relentless focus on product craftsmanship.
+        </p>
+      </div>
+
+      <!-- Story Narrative Paragraphs (3-Column Split Without Cards) -->
+      <div id="kitchen-story-text" class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
+        <div class="space-y-4">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">2009 &bull; THE SPARK</span>
+          <p class="text-lg sm:text-xl font-medium text-slate-900 leading-relaxed">
+            It all started in 2009, when a dream by our founder kicked off a series of events. It was the shaping of a lofty dream, as the seed of an idea was born.
+          </p>
+        </div>
+
+        <div class="space-y-4 md:border-l md:border-slate-200 md:pl-8">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">THE KITCHEN HUB</span>
+          <p class="text-slate-600 text-base leading-relaxed">
+            The vision was so powerful and infectious that it attracted other like-minded souls as we shifted to a kitchen space in couple of years, turning an uninspiring but hallowed space into a vibrant hub for cooking ideas. Brewed by a different breed of people aspiring to build the future of retail, we soon moved out to a bigger facility.
+          </p>
+        </div>
+
+        <div class="space-y-4 md:border-l md:border-slate-200 md:pl-8">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block">TODAY &bull; GLOBAL SCALE</span>
+          <p class="text-slate-600 text-base leading-relaxed">
+            Today, we are spread across global locations and are partners to some of the world’s leading enterprises and ambitious disruptors. Our relentless focus on zero-compromise engineering has enabled us to deliver over 250+ high-impact digital products worldwide.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Engineering DNA & Origin Story Section -->
+
+
+
+  <!-- BEGIN: Global Presence Section -->
+  <section class="py-24 px-6 bg-[#f3f4f6] border-y border-slate-200/80 my-16">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+        <div>
+          <div class="pill-badge mb-6 uppercase tracking-widest font-bold text-slate-600 border-slate-300">
+            GLOBAL FOOTPRINT
+          </div>
+          <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight text-slate-900">
+            Anchored in <span class="text-slate-900">India &amp; Canada</span>.
+          </h2>
+        </div>
+
+        <div class="text-left lg:text-right">
+          <p class="text-slate-500 max-w-sm lg:ml-auto text-sm leading-relaxed font-normal">
+            Operating software engineering and R&amp;D hubs across India and Canada to serve global enterprise clients with round-the-clock delivery.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footprint Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Card 1: India HQ -->
+        <div class="bg-white p-8 md:p-10 card-rounded shadow-sm group hover:shadow-2xl transition-all duration-300 flex flex-col justify-between border border-slate-100 hover:-translate-y-2">
+          <div>
+            <div class="flex justify-between items-center mb-6">
+              <div class="w-16 h-16 rounded-2xl bg-slate-100/80 flex items-center justify-center text-base font-semibold text-slate-900 group-hover:text-white group-hover:bg-slate-900 group-hover:scale-110 transition-all border border-slate-200 shadow-inner">
+                IN
+              </div>
+              <div class="pill-badge bg-slate-100 text-slate-700 border-slate-200 text-xs font-bold uppercase">R&amp;D HEADQUARTERS</div>
+            </div>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-3">India Headquarters</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-2 font-medium">
+              Kakkanad, Ernakulam, Kerala - 682037, India
+            </p>
+            <a href="tel:+918848806406" class="text-slate-900 hover:text-slate-600 font-mono text-xs font-bold transition-colors block mb-6">+91 88488 06406</a>
+
+            <ul class="space-y-3 text-sm text-slate-600 font-medium border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2">✓ Global Engineering &amp; Core R&amp;D Operations</li>
+              <li class="flex items-center gap-2">✓ Agile Sprint Delivery &amp; Telemetry Lab</li>
+              <li class="flex items-center gap-2">✓ 24/7 Enterprise Cloud &amp; Mobile Support</li>
+            </ul>
+          </div>
+          <div class="pt-8 border-t border-slate-100 flex justify-between items-center mt-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">KOCHI ENGINEERING HUB</span>
+            <button onclick="openQuoteModal('India HQ')" aria-label="Contact India HQ" class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center transform group-hover:rotate-45 transition-all shadow-md">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Canada Office -->
+        <div class="bg-white p-8 md:p-10 card-rounded shadow-sm group hover:shadow-2xl transition-all duration-300 flex flex-col justify-between border border-slate-100 hover:-translate-y-2">
+          <div>
+            <div class="flex justify-between items-center mb-6">
+              <div class="w-16 h-16 rounded-2xl bg-slate-100/80 flex items-center justify-center text-base font-semibold text-slate-900 group-hover:text-white group-hover:bg-slate-900 group-hover:scale-110 transition-all border border-slate-200 shadow-inner">
+                CA
+              </div>
+              <div class="pill-badge bg-slate-100 text-slate-700 border-slate-200 text-xs font-bold uppercase">NORTH AMERICA</div>
+            </div>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-3">Canada Office</h3>
+            <p class="text-slate-500 text-sm leading-relaxed mb-2 font-medium">
+              576 Prince St Unit 1, Truro, NS B2N 1G3, Canada
+            </p>
+            <a href="tel:+19027004454" class="text-slate-900 hover:text-slate-600 font-mono text-xs font-bold transition-colors block mb-6">+1 902-700-4454</a>
+
+            <ul class="space-y-3 text-sm text-slate-600 font-medium border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2">✓ Client Strategy &amp; Partnership Management</li>
+              <li class="flex items-center gap-2">✓ North American Enterprise Delivery</li>
+              <li class="flex items-center gap-2">✓ Product Consulting &amp; Architecture</li>
+            </ul>
+          </div>
+          <div class="pt-8 border-t border-slate-100 flex justify-between items-center mt-6">
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">CANADA HUB</span>
+            <button onclick="openQuoteModal('Canada Office')" aria-label="Contact Canada Office" class="w-12 h-12 bg-slate-900 text-white rounded-full flex items-center justify-center transform group-hover:rotate-45 transition-all shadow-md">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Global Presence Section -->
+
+  <!-- BEGIN: Seamless Dark Culture & Team Section -->
+  <section class="bg-black text-white py-20 px-6 sm:px-12 mt-0 mb-0 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto space-y-20">
+      
+      <!-- Block 1: Get To Know The People Banner -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- Left Column: Big Bold + Green Italic Typography -->
+        <div class="lg:col-span-8">
+          <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-tight text-white leading-[1.05]">
+            Get to know the<br>
+            people that<br>
+            <span class="block mt-1 text-white font-bold">get it all done.</span>
+          </h2>
+        </div>
+
+        <!-- Right Column: Context Paragraph -->
+        <div class="lg:col-span-4">
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+            Retail is what we do. Which, for you, means experience (we’ve probably seen it before), expertise (we know how to solve it), and vision (we see where it’s going).
+          </p>
+        </div>
+      </div>
+
+      <!-- Block 2: Founder Portrait + Full Company Lawn Photo -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-10 border-t border-white/10">
+        <!-- Left Column: Team Image 1 -->
+        <div class="lg:col-span-4 flex justify-center lg:justify-start">
+          <div class="overflow-hidden rounded-3xl border border-white/10 shadow-2xl group w-full max-w-sm">
+            <img src="images/team_img_1.png" alt="Bigmonks Leadership & Team" class="w-full h-80 sm:h-96 md:h-[450px] lg:h-[480px] object-cover rounded-3xl group-hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+
+        <!-- Right Column: Team Image 2 -->
+        <div class="lg:col-span-8 flex justify-center lg:justify-end">
+          <div class="overflow-hidden rounded-3xl border border-white/10 shadow-2xl group w-full">
+            <img src="images/team_img_2.png" alt="Bigmonks Team Gathering" class="w-full h-64 sm:h-80 md:h-[420px] lg:h-[450px] object-cover rounded-3xl group-hover:scale-105 transition-transform duration-700" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 3: Welcoming Space Heading & Team Gathering Photo -->
+      <div class="space-y-10 pt-12 border-t border-white/10">
+        <div>
+
+          <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] max-w-5xl">
+            We’re passionate about building a welcoming space where talented people come together and
+            <span class="block sm:inline mt-2 sm:mt-0 text-white font-bold">really shine as a team!</span>
+          </h2>
+        </div>
+
+        <div class="overflow-hidden rounded-3xl border border-white/10 shadow-2xl group w-full">
+          <img src="images/team_img_3.png" alt="Bigmonks Team Members Gathering" class="w-full h-72 sm:h-96 md:h-[480px] lg:h-[540px] object-cover rounded-3xl group-hover:scale-105 transition-transform duration-700" />
+        </div>
+      </div>
+
+      <!-- Block 4: 5-Column Metric Stats Grid -->
+      <div class="pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-12 sm:gap-16">
+        <!-- Stat 1 -->
+        <div class="space-y-2">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">900+</div>
+          <p class="text-slate-400 text-sm sm:text-base font-normal">Rapidly growing tribe</p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="space-y-2">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">7 time</div>
+          <p class="text-slate-400 text-sm sm:text-base font-normal max-w-xs">Winner of the “Great Place to Work” award</p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="space-y-2">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">15 yrs.</div>
+          <p class="text-slate-400 text-sm sm:text-base font-normal">of deep domain expertise</p>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="space-y-2">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">90%</div>
+          <p class="text-slate-400 text-sm sm:text-base font-normal">Growth from referrals</p>
+        </div>
+
+        <!-- Stat 5 -->
+        <div class="space-y-2">
+          <div class="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight">9+</div>
+          <p class="text-slate-400 text-sm sm:text-base font-normal max-w-xs">avg. yrs. of experience of technologists, creators, and problem-solvers</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Seamless Dark Culture & Team Section -->
+
+  <!-- BEGIN: Shaping The Future Dark Banner Section -->
+  <section class="bg-black text-white py-24 px-6 sm:px-12 mt-0 mb-0 relative overflow-hidden border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[4.75rem] font-bold tracking-tight text-white leading-[1.1]">
+        At the intersection of retail, AI<br>
+        and intelligent human–centered<br>
+        design, we're not just adapting<br>
+        to the future of retail –<br>
+        <span class="block mt-1 text-white font-bold">we're shaping it.</span>
+      </h2>
+    </div>
+  </section>
+  <!-- END: Shaping The Future Dark Banner Section -->
+
+  <!-- BEGIN: Core Values & Philosophy Section -->
+  <section class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8 border-b border-slate-200/80 pb-10">
+      <div>
+        <div class="pill-badge mb-6 uppercase tracking-widest font-bold text-slate-600 border-slate-300">
+          HOW WE WORK &amp; BUILD
+        </div>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter leading-tight text-slate-900">
+          Our core engineering principles.
+        </h2>
+      </div>
+
+      <div class="text-left lg:text-right">
+        <p class="text-slate-500 max-w-md lg:ml-auto text-sm sm:text-base leading-relaxed font-normal">
+          Guided by a craftsman mindset, we build scalable software systems that empower global retail leaders worldwide.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Principle 1 -->
+      <div class="bg-white p-8 card-rounded border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-slate-100 rounded-bl-full -z-0 transition-transform duration-500 group-hover:scale-110"></div>
+        <div class="relative z-10">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">01 &bull; CRAFTSMANSHIP</div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-black transition-colors">Zero-Compromise Quality</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            We treat every line of code as craftsman architecture. No shortcuts, no proxy engineers, and zero compromises on performance or technical debt.
+          </p>
+        </div>
+        <div class="relative z-10 pt-4 border-t border-slate-100 text-xs font-bold text-slate-900 flex items-center gap-2">
+          <span>Clean Code Standard</span>
+          <svg class="w-4 h-4 text-slate-900 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Principle 2 -->
+      <div class="bg-white p-8 card-rounded border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-slate-100 rounded-bl-full -z-0 transition-transform duration-500 group-hover:scale-110"></div>
+        <div class="relative z-10">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">02 &bull; INNOVATION</div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-black transition-colors">Human-Centered AI</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Blending 15+ years of retail domain expertise with modern predictive AI, automated telemetry, and intelligent human-centric UX design.
+          </p>
+        </div>
+        <div class="relative z-10 pt-4 border-t border-slate-100 text-xs font-bold text-slate-900 flex items-center gap-2">
+          <span>AI &amp; Retail Telemetry</span>
+          <svg class="w-4 h-4 text-slate-900 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Principle 3 -->
+      <div class="bg-white p-8 card-rounded border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-slate-100 rounded-bl-full -z-0 transition-transform duration-500 group-hover:scale-110"></div>
+        <div class="relative z-10">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">03 &bull; GLOBAL REACH</div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-black transition-colors">Global Scale &amp; Local Focus</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Operating seamlessly across 6 global locations with a unified craftsman spirit, providing 24/7 dedicated engineering support.
+          </p>
+        </div>
+        <div class="relative z-10 pt-4 border-t border-slate-100 text-xs font-bold text-slate-900 flex items-center gap-2">
+          <span>6 Global Hubs</span>
+          <svg class="w-4 h-4 text-slate-900 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Principle 4 -->
+      <div class="bg-white p-8 card-rounded border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-slate-100 rounded-bl-full -z-0 transition-transform duration-500 group-hover:scale-110"></div>
+        <div class="relative z-10">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">04 &bull; RELIABILITY</div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-3 group-hover:text-black transition-colors">Relentless Reliability</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            Architecting cloud-native microservices, zero-downtime CI/CD pipelines, and high-availability infrastructure with 99.99% SLAs.
+          </p>
+        </div>
+        <div class="relative z-10 pt-4 border-t border-slate-100 text-xs font-bold text-slate-900 flex items-center gap-2">
+          <span>99.99% SLA Commitment</span>
+          <svg class="w-4 h-4 text-slate-900 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- BEGIN: Footer / CTA Section -->
+  <footer class="pt-24 px-6 bg-white border-t border-slate-200" data-purpose="main-footer">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+
+        <!-- Footer Image Card -->
+        <div class="lg:col-span-3">
+          <div class="relative rounded-[2rem] overflow-hidden group shadow-lg">
+            <img alt="Dubai Photorealistic Supply Chain Hub"
+              class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
+              src="images/real_future_logistics.png" />
+            <div
+              class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white p-8 text-center backdrop-blur-none group-hover:backdrop-blur-xs transition-all">
+              
+              <button onclick="openQuoteModal()" aria-label="Explore More"
+                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-900 transform group-hover:rotate-45 hover:bg-black hover:text-white transition-all shadow-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Main Pitch -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-10 text-slate-900">
+            Building the future of digital software.
+          </h2>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">WEB &amp; MOBILE APPS</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">CLOUD &amp; AI ARCHITECTURE</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">ENTERPRISE SOFTWARE</div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm font-bold text-slate-600 text-center sm:text-left">
+            <!-- Location -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Locations</p>
+              <div class="space-y-2 text-xs text-slate-700 leading-relaxed font-normal">
+                <div>
+                  <strong class="text-slate-900 font-bold block">India HQ:</strong>
+                  Kakkanad, Ernakulam, Kerala - 682037
+                </div>
+                <div>
+                  <strong class="text-slate-900 font-bold block">Canada Hub:</strong>
+                  576 Prince St Unit 1, Truro, NS B2N 1G3
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Contact</p>
+              <div class="space-y-1 font-mono text-xs font-semibold">
+                <a href="tel:+918848806406" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">IN:</span> +91 88488 06406</a>
+                <a href="tel:+19027004454" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">CA:</span> +1 902-700-4454</a>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Connect</p>
+              <a href="mailto:info@bigmonks.com" class="text-slate-900 hover:text-slate-600 block text-sm transition-colors font-bold font-mono">info@bigmonks.com</a>
+              <a href="https://www.bigmonks.com" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-600 block text-xs mt-1 transition-colors font-mono">www.bigmonks.com</a>
+              <a href="careers" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:text-slate-600 mt-2.5 transition-colors group">
+                <span>Careers</span>
+                <span class="bg-black text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full group-hover:bg-slate-800 transition-colors">We're Hiring</span>
+              </a>
+              <p class="text-[11px] text-slate-400 font-normal mt-3">&copy; 2026 Bigmonks Technologies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Social Links -->
+        <div class="lg:col-span-3 flex flex-col gap-3">
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://x.com/BigmonksTech" target="_blank" rel="noopener noreferrer">X (Twitter) <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.instagram.com/bigmonks_technologies/" target="_blank" rel="noopener noreferrer">Instagram <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.linkedin.com/company/bigmonks-technologies01" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+
+          <div class="mt-8 flex justify-center lg:justify-end">
+            <button onclick="scrollToTop()"
+              class="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-xl hover:bg-black transition-all hover:scale-110"
+              title="Back to Top" aria-label="Back to Top">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- HUGE LOGO TEXT FOOTER -->
+      <div class="relative pt-12 border-t border-slate-200 overflow-hidden px-2 sm:px-4">
+        <div
+          class="relative z-20 flex flex-col sm:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 gap-3">
+          <a href="privacy-policy" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Privacy Policy</a>
+          <span class="text-slate-400">BIGMONKS TECHNOLOGIES &bull; KERALA, INDIA &bull; CANADA</span>
+          <a href="terms-and-conditions" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Terms &amp; Conditions</a>
+        </div>
+
+        <h1
+          class="huge-title text-slate-900 text-[4rem] sm:text-[9.5rem] md:text-[13rem] lg:text-[15.5rem] -mb-2 sm:-mb-6 md:-mb-8 leading-[0.85] tracking-tight select-none pointer-events-none block text-center w-full max-w-full -translate-x-2 sm:-translate-x-4 md:-translate-x-6">
+          BIGMONKS
+        </h1>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END: Footer Section -->
+
+  <!-- ==================== MODALS ==================== -->
+  <!-- Quote Estimator Modal -->
+  <div id="quote-modal" class="fixed inset-0 z-[110] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-10 shadow-2xl relative border border-slate-200">
+      <button onclick="closeQuoteModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 text-2xl font-bold">
+        &times;
+      </button>
+
+      <h3 class="text-3xl font-black text-slate-900 mb-2">Request Engineering Quote</h3>
+      <p class="text-slate-500 text-sm mb-6">Tell us about your project requirements and target delivery timeline.</p>
+
+      <form onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name</label>
+            <input type="text" required placeholder="John Doe" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-slate-900" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Work Email</label>
+            <input type="email" required placeholder="john@company.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-slate-900" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Service Required</label>
+          <select id="quote-service-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-slate-900">
+            <option>Enterprise Product Engineering</option>
+            <option>Web Development</option>
+            <option>Mobile Applications</option>
+            <option>Cloud & AI Solutions</option>
+            <option>UI/UX Design Systems</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Project Details</label>
+          <textarea rows="3" placeholder="Describe scope, objectives, or timeline..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-slate-900"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-colors shadow-md text-sm">
+          Submit Quote Request &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Privacy Policy -->
+  <div id="privacy-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[110] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl relative border border-slate-100">
+      <button onclick="closeModal('privacy-modal')" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 text-xl font-bold">&times;</button>
+      <div class="pill-badge bg-slate-100 text-slate-900 border-slate-200 mb-3 font-bold text-xs uppercase">Legal Information</div>
+      <h3 class="text-2xl font-black text-slate-900 mb-3">Privacy Policy</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-6">
+        Bigmonks Technologies is committed to preserving the privacy and data integrity of all client telemetry and user interaction logs. All enterprise interactions are protected under NDA and ISO-27001 compliant cloud data handling standards.
+      </p>
+      <button onclick="closeModal('privacy-modal')" class="w-full bg-slate-900 text-white py-3.5 rounded-full font-bold text-sm hover:bg-black transition-colors">
+        Close Window
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal: Terms & Conditions -->
+  <div id="terms-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-[110] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-8 shadow-2xl relative border border-slate-100">
+      <button onclick="closeModal('terms-modal')" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 text-xl font-bold">&times;</button>
+      <div class="pill-badge bg-slate-100 text-slate-900 border-slate-200 mb-3 font-bold text-xs uppercase">Terms of Service</div>
+      <h3 class="text-2xl font-black text-slate-900 mb-3">Terms &amp; Conditions</h3>
+      <p class="text-slate-600 text-sm leading-relaxed mb-6">
+        All software engineering deliverables, source code repositories, and custom API architectures generated by Bigmonks Technologies are governed under enterprise service agreements and milestone-based SLA commitments.
+      </p>
+      <button onclick="closeModal('terms-modal')" class="w-full bg-slate-900 text-white py-3.5 rounded-full font-bold text-sm hover:bg-black transition-colors">
+        Close Window
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if (typeof initKitchenPinnedScroll === 'function') {
+      initKitchenPinnedScroll();
+    }
+  </script>
+</body>
+
+</html>

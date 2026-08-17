@@ -1,0 +1,13 @@
+{
+  "name": "demo-connect-web",
+  "version": "1.0.0",
+  "description": "Connect Logistics - Global Freight & Supply Chain Web Application",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve .",
+    "dev": "npx -y serve ."
+  },
+  "keywords": ["logistics", "freight", "dubai", "web", "connect"],
+  "author": "Antigravity",
+  "license": "MIT"
+}

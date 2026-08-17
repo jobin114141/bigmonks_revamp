@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title>Engineering Insights &amp; Articles | Bigmonks Tech Labs</title>
+  <meta name="title" content="Engineering Insights &amp; Articles | Bigmonks Tech Labs" />
+  <meta name="description"
+    content="Deep dives into enterprise web systems, high-concurrency microservices, GraphQL, Next.js 15, AI vector pipelines, and omnichannel retail tech from Bigmonks engineers." />
+  <meta name="keywords"
+    content="Bigmonks Blogs, Engineering Insights, GraphQL Redis Microservices, SwiftUI Retail POS, AWS Lambda Serverless, LLM Vector Search, NextJS 15 Performance" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://www.bigmonks.com/blogs" />
+
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="blog" />
+  <meta property="og:url" content="https://www.bigmonks.com/blogs" />
+  <meta property="og:title" content="Engineering Insights &amp; Tech Thought Leadership | Bigmonks" />
+  <meta property="og:description"
+    content="Deep dives into modern enterprise web systems, AI vector pipelines, and omnichannel retail technologies." />
+  <meta property="og:image" content="https://www.bigmonks.com/images/blog_hero_img.png" />
+  <meta property="og:site_name" content="Bigmonks Technologies" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Engineering Insights &amp; Tech Thought Leadership | Bigmonks" />
+  <meta name="twitter:description"
+    content="Deep dives into modern enterprise web systems, AI vector pipelines, and omnichannel retail technologies." />
+  <meta name="twitter:image" content="https://www.bigmonks.com/images/blog_hero_img.png" />
+
+  <!-- Mobile Browser Theme & Geo Meta Tags -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="geo.region" content="IN-KL" />
+  <meta name="geo.placename" content="Kochi, Ernakulam, Kerala, India" />
+
+  <!-- Schema.org JSON-LD Structured Data for Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Bigmonks Engineering Insights",
+    "url": "https://www.bigmonks.com/blogs",
+    "description": "Thought leadership on GraphQL, Redis Edge, Serverless Architecture, Vector Search, and Headless Web Applications.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bigmonks Technologies",
+      "url": "https://www.bigmonks.com/"
+    }
+  }
+  </script>
+
+  <!-- Favicon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0c0c0c',
+              gray: '#f3f4f6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-900 bg-white font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- BEGIN: Centered Floating Replica Pill Navbar Header -->
+  <nav id="main-nav"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-max max-w-[95vw]">
+
+    <!-- DESKTOP Replica Navbar Pill (md and up) -->
+    <div
+      class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300">
+      
+      <!-- Brand Logo Left -->
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo"
+          class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <!-- Center Navigation Links -->
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link nav-active whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+
+      <!-- Right CTA Button -->
+      <a href="contact"
+        class="bg-black hover:bg-black text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+
+    <!-- MOBILE Replica Navbar Pill (below md) -->
+    <div class="md:hidden">
+      <!-- Closed state bar: logo + CTA + burger -->
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo"
+            class="h-6 w-auto object-contain" />
+        </a>
+
+        <div class="flex items-center gap-3">
+          <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu"
+            class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-nav-menu"
+        class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col py-2">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item nav-active">Blogs</a>
+          <div class="px-5 py-3 border-t border-slate-100">
+            <button onclick="openQuoteModal(); closeMobileNav();"
+              class="w-full bg-black text-white font-medium text-sm rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+              <span>Get in touch</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+  <!-- END: Centered Floating Replica Pill Navbar Header -->
+
+  <!-- BEGIN: Bespoke Blogs Hero Section -->
+  <section
+    class="relative min-h-[50vh] sm:min-h-[85vh] flex flex-col justify-between pt-20 sm:pt-28 pb-4 sm:pb-8 px-4 sm:px-12 overflow-hidden"
+    data-purpose="hero">
+    <!-- Hero Background Image Container -->
+    <div class="absolute inset-0 z-0 bg-white overflow-hidden flex items-center justify-center">
+      <img alt="Bigmonks Engineering Blogs &amp; Insights"
+        class="w-full h-full object-contain sm:object-cover object-center scale-100 sm:scale-85 transform transition-all duration-500"
+        src="images/blog_hero_img.png" onerror="this.onerror=null; this.src='images/hero_widescreen.png';" />
+    </div>
+
+    <!-- Hero Content Container -->
+    <div class="relative z-10 max-w-7xl mx-auto w-full flex-1 flex flex-col justify-between pb-0">
+
+      <!-- Top Row: Top Right Search Status Pill -->
+      <div class="flex justify-end items-center gap-3 pt-2 sm:pt-6">
+        <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md border border-slate-900/10 px-4 py-2 rounded-full shadow-sm text-xs font-semibold text-slate-900">
+                    <span id="blog-updated-date">UPDATED AUG 15, 2026 &bull; <strong class="font-extrabold text-black">BIGMONKS TECH LABS</strong></span>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Bottom Left Content Block -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-12 sm:pt-0">
+
+        <!-- Bottom Left Column -->
+        <div class="lg:col-span-9 space-y-4">
+          <div class="pill-badge bg-white/80 backdrop-blur-sm text-slate-900 border-slate-300 uppercase tracking-widest font-bold text-xs inline-flex">
+            INSIGHTS &amp; ARTICLES
+          </div>
+
+          <h1 class="text-slate-900 text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight uppercase">
+            ENGINEERING INSIGHTS <br /> &amp; TECH THOUGHT LEADERSHIP
+          </h1>
+
+          <div class="flex items-center gap-2.5 pt-1">
+            <span class="text-xs font-bold text-slate-900 uppercase tracking-widest">ARCHITECTURE &bull; AI AGENTS &bull; CLOUD &bull; RETAIL</span>
+          </div>
+
+          <p class="text-slate-900 text-xs sm:text-sm max-w-xl leading-relaxed font-normal tracking-wide">
+            Deep dives into modern enterprise web systems, high-concurrency microservices, AI vector pipelines, and real-time omnichannel retail technologies.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Bespoke Blogs Hero Section -->
+
+
+
+  <!-- BEGIN: Interactive Category Filter Bar -->
+  <section class="py-6 px-6 max-w-7xl mx-auto">
+    <div class="flex flex-wrap justify-between items-center gap-4 border-b border-slate-200 pb-6">
+      <div class="flex flex-wrap gap-2.5">
+        <button onclick="filterBlogCategory('all', this)" class="blog-cat-btn bg-black text-white border-black px-5 py-2.5 rounded-full text-xs font-bold border transition-all cursor-pointer">
+          All Articles
+        </button>
+        <button onclick="filterBlogCategory('ai', this)" class="blog-cat-btn bg-white text-slate-700 border-slate-200 px-5 py-2.5 rounded-full text-xs font-bold border hover:border-slate-400 transition-all cursor-pointer">
+          AI &amp; Machine Learning
+        </button>
+        <button onclick="filterBlogCategory('cloud', this)" class="blog-cat-btn bg-white text-slate-700 border-slate-200 px-5 py-2.5 rounded-full text-xs font-bold border hover:border-slate-400 transition-all cursor-pointer">
+          Cloud &amp; DevOps
+        </button>
+        <button onclick="filterBlogCategory('mobile', this)" class="blog-cat-btn bg-white text-slate-700 border-slate-200 px-5 py-2.5 rounded-full text-xs font-bold border hover:border-slate-400 transition-all cursor-pointer">
+          Mobile Platforms
+        </button>
+        <button onclick="filterBlogCategory('retail', this)" class="blog-cat-btn bg-white text-slate-700 border-slate-200 px-5 py-2.5 rounded-full text-xs font-bold border hover:border-slate-400 transition-all cursor-pointer">
+          Omnichannel Retail
+        </button>
+      </div>
+
+      <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+        Showing 6 Research Papers
+      </div>
+    </div>
+  </section>
+  <!-- END: Interactive Category Filter Bar -->
+
+  <!-- BEGIN: Blog Articles Grid Section -->
+  <section class="py-12 px-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+      
+      <!-- Article 1: Cloud & DevOps -->
+      <div class="blog-card cloud bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_api_architecture.png" alt="Building Sub-15ms APIs" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">CLOUD &amp; DEVOPS</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            Building Sub-15ms APIs with GraphQL, Redis Edge &amp; Kubernetes
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            A comprehensive guide on eliminating database latency bottlenecks using distributed Redis caching layers and edge API gateways.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">AUG 15, 2026</span>
+          <span class="text-slate-400">5 Min Read</span>
+        </div>
+      </div>
+
+      <!-- Article 2: Mobile Platforms -->
+      <div class="blog-card mobile bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_mobile_pos.png" alt="Flutter vs Native Swift" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">MOBILE PLATFORMS</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            Why SwiftUI &amp; Jetpack Compose are Revolutionizing Retail POS
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            Analyzing 120Hz native UI rendering pipelines for in-store tablet checkout terminals and offline SQLite synchronization.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">AUG 12, 2026</span>
+          <span class="text-slate-400">4 Min Read</span>
+        </div>
+      </div>
+
+      <!-- Article 3: Retail & Cloud -->
+      <div class="blog-card retail cloud bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_cloud_serverless.png" alt="Monolith to Serverless Microservices" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">OMNICHANNEL RETAIL</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            From Monolith to Serverless: A 99.99% Reliability Case Study
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            How Bigmonks refactored a legacy retail catalog backend into AWS Lambda and Kafka event-driven microservices.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">AUG 08, 2026</span>
+          <span class="text-slate-400">7 Min Read</span>
+        </div>
+      </div>
+
+      <!-- Article 4: AI & Machine Learning -->
+      <div class="blog-card ai bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_ai_inventory.png" alt="Predictive Inventory Models" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">AI &amp; MACHINE LEARNING</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            Predictive Inventory Models: How LLMs &amp; Vector Search Cut Waste by 40%
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            Implementing machine learning time-series forecasting to automate supply chain reorders with zero manual intervention.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">AUG 02, 2026</span>
+          <span class="text-slate-400">8 Min Read</span>
+        </div>
+      </div>
+
+      <!-- Article 5: Cloud & DevOps -->
+      <div class="blog-card cloud bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_devops_deployment.png" alt="Zero-Downtime Deployment Strategies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">CLOUD &amp; DEVOPS</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            Zero-Downtime Blue/Green Deployment Strategies for Global Scale
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            Automating Terraform Infrastructure as Code and GitHub Actions for continuous release pipelines without dropping a single HTTP request.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">JUL 27, 2026</span>
+          <span class="text-slate-400">5 Min Read</span>
+        </div>
+      </div>
+
+      <!-- Article 6: Web Platforms -->
+      <div class="blog-card web bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div>
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <img src="images/blog_web_nextjs.png" alt="Headless Next.js 15" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">WEB PLATFORMS</div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors">
+            Designing Conversion-Driven Web Systems with Headless Next.js 15
+          </h3>
+          <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal">
+            Exploring React Server Components (RSC), partial pre-rendering, and layout shift optimizations for 100/100 Lighthouse performance.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+          <span class="font-bold text-slate-900">JUL 20, 2026</span>
+          <span class="text-slate-400">6 Min Read</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Blog Articles Grid Section -->
+
+  <!-- BEGIN: Newsletter Subscription Callout -->
+  <section class="py-16 px-6 max-w-7xl mx-auto my-12">
+    <div class="bg-black text-white p-8 md:p-14 rounded-[36px] border border-white/10 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 shadow-2xl">
+      <div class="max-w-xl">
+        <div class="pill-badge bg-white/10 text-white border-white/20 uppercase tracking-widest font-bold text-xs mb-3">
+          WEEKLY ENGINEERING NEWSLETTER
+        </div>
+        <h3 class="text-3xl font-extrabold text-white tracking-tight">Stay updated with Bigmonks Tech Labs</h3>
+        <p class="text-slate-400 text-sm mt-2">Get our latest research papers on AI vector architectures, cloud microservices, and retail tech delivered directly to your inbox.</p>
+      </div>
+
+      <form onsubmit="handleNewsletterSubmit(event)" class="w-full lg:w-auto flex flex-col sm:flex-row gap-3">
+        <input type="email" required placeholder="Enter your work email..." class="bg-white/10 text-white placeholder-slate-400 border border-white/20 px-5 py-3.5 rounded-full text-sm focus:outline-none focus:border-white w-full sm:w-80" />
+        <button type="submit" class="bg-white text-black font-bold px-8 py-3.5 rounded-full text-xs hover:bg-slate-100 transition-colors shadow-md shrink-0 cursor-pointer">
+          Subscribe Free
+        </button>
+      </form>
+    </div>
+  </section>
+  <!-- END: Newsletter Subscription Callout -->
+
+  <!-- BEGIN: Footer / CTA Section -->
+  <footer class="pt-24 px-6 bg-white" data-purpose="main-footer">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+
+        <!-- Footer Image Card -->
+        <div class="lg:col-span-3">
+          <div class="relative rounded-[2rem] overflow-hidden group shadow-lg">
+            <img alt="Dubai Photorealistic Supply Chain Hub"
+              class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
+              src="images/real_future_logistics.png" />
+            <div
+              class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white p-8 text-center backdrop-blur-none group-hover:backdrop-blur-xs transition-all">
+         
+              <button onclick="openQuoteModal()" aria-label="Explore More"
+                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-900 transform group-hover:rotate-45 hover:bg-black hover:text-white transition-all shadow-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Main Pitch -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-10 text-slate-900">
+            Building the future of digital software.
+          </h2>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">WEB &amp; MOBILE APPS</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">CLOUD &amp; AI ARCHITECTURE</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">ENTERPRISE SOFTWARE</div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm font-bold text-slate-600 text-center sm:text-left">
+            <!-- Location -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Locations</p>
+              <div class="space-y-2 text-xs text-slate-700 leading-relaxed font-normal">
+                <div>
+                  <strong class="text-slate-900 font-bold block">India HQ:</strong>
+                  Kakkanad, Ernakulam, Kerala - 682037
+                </div>
+                <div>
+                  <strong class="text-slate-900 font-bold block">Canada Hub:</strong>
+                  576 Prince St Unit 1, Truro, NS B2N 1G3
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Contact</p>
+              <div class="space-y-1 font-mono text-xs font-semibold">
+                <a href="tel:+918848806406" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">IN:</span> +91 88488 06406</a>
+                <a href="tel:+19027004454" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">CA:</span> +1 902-700-4454</a>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Connect</p>
+              <a href="mailto:info@bigmonks.com" class="text-slate-900 hover:text-slate-600 block font-mono text-sm transition-colors font-bold">info@bigmonks.com</a>
+              <a href="https://www.bigmonks.com" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-600 block font-mono text-xs mt-1 transition-colors">www.bigmonks.com</a>
+              <a href="careers" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:text-slate-600 mt-2.5 transition-colors group">
+                <span>Careers</span>
+                <span class="bg-black text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full group-hover:bg-slate-800 transition-colors">We're Hiring</span>
+              </a>
+              <p class="text-[11px] text-slate-400 font-normal mt-3">&copy; 2026 Bigmonks Technologies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Social Links -->
+        <div class="lg:col-span-3 flex flex-col gap-3">
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://x.com/BigmonksTech" target="_blank" rel="noopener noreferrer">X (Twitter) <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.instagram.com/bigmonks_technologies/" target="_blank" rel="noopener noreferrer">Instagram <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.linkedin.com/company/bigmonks-technologies01" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+
+          <div class="mt-8 flex justify-center lg:justify-end">
+            <button onclick="scrollToTop()"
+              class="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-xl hover:bg-black transition-all hover:scale-110"
+              title="Back to Top" aria-label="Back to Top">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- HUGE LOGO TEXT FOOTER -->
+      <div class="relative pt-12 border-t border-slate-200 overflow-hidden px-2 sm:px-4">
+        <div
+          class="relative z-20 flex flex-col sm:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 gap-3">
+          <a href="privacy-policy" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Privacy Policy</a>
+          <span class="text-slate-400">BIGMONKS TECHNOLOGIES &bull; KERALA, INDIA &bull; CANADA</span>
+          <a href="terms-and-conditions" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Terms &amp; Conditions</a>
+        </div>
+
+        <h1
+          class="huge-title text-slate-900 text-[4rem] sm:text-[9.5rem] md:text-[13rem] lg:text-[15.5rem] -mb-2 sm:-mb-6 md:-mb-8 leading-[0.85] tracking-tight select-none pointer-events-none block text-center w-full max-w-full -translate-x-2 sm:-translate-x-4 md:-translate-x-6">
+          BIGMONKS
+        </h1>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END: Footer Section -->
+
+  <!-- BEGIN: Interactive Quote Request Modal -->
+  <div id="quote-modal"
+    class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="bg-white rounded-3xl max-w-lg w-full p-8 md:p-10 shadow-2xl relative border border-slate-100 transform scale-95 transition-transform duration-300"
+      id="quote-modal-card">
+      
+      <button onclick="closeQuoteModal()" aria-label="Close modal"
+        class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="mb-6">
+        <span class="pill-badge uppercase tracking-widest font-bold text-slate-600 border-slate-300 text-[10px] mb-3">
+          GET IN TOUCH
+        </span>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" id="quote-modal-title">
+          Let’s discuss your project
+        </h3>
+        <p class="text-slate-500 text-sm mt-1">
+          Fill out the form below and our engineering team will get back to you within 24 hours.
+        </p>
+      </div>
+
+      <form id="quote-form" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+        <input type="hidden" id="service-type-field" name="service_type" value="General Inquiry" />
+        
+        <div>
+          <label for="quote-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Name *</label>
+          <input type="text" id="quote-name" required placeholder="John Doe"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Work Email *</label>
+          <input type="email" id="quote-email" required placeholder="john@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number</label>
+          <input type="tel" id="quote-phone" placeholder="+1 (555) 000-0000"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Project Details</label>
+          <textarea id="quote-message" rows="3" placeholder="Briefly describe your requirements or vision..."
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-black text-white font-bold py-3.5 rounded-full text-sm hover:bg-slate-800 transition-colors shadow-md mt-2">
+          Submit Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- END: Interactive Quote Request Modal -->
+
+  <!-- App JavaScript -->
+  <script src="app.js"></script>
+</body>
+
+</html>

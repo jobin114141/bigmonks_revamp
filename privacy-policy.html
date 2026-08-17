@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Bigmonks Technologies</title>
+  <meta name="title" content="Privacy Policy | Bigmonks Technologies" />
+  <meta name="description" content="Read the Privacy Policy of Bigmonks Technologies. Learn how we collect, use, and protect your personal data across our services and platforms." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.bigmonks.com/privacy-policy" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.bigmonks.com/privacy-policy" />
+  <meta property="og:title" content="Privacy Policy | Bigmonks Technologies" />
+  <meta property="og:description" content="Read the Privacy Policy of Bigmonks Technologies. Learn how we collect, use, and protect your personal data." />
+  <meta property="og:site_name" content="Bigmonks Technologies" />
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { dark: '#0c0c0c', gray: '#f3f4f6' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-900 bg-white font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- BEGIN: Navbar -->
+  <nav id="main-nav" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-max max-w-[95vw]">
+    <!-- DESKTOP Navbar Pill -->
+    <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300">
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo" class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+      <a href="contact" class="bg-black text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+    <!-- MOBILE Navbar Pill -->
+    <div class="md:hidden">
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo" class="h-6 w-auto object-contain" />
+        </a>
+        <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu" class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+          <span class="nav-burger-bar"></span>
+          <span class="nav-burger-bar"></span>
+          <span class="nav-burger-bar"></span>
+        </button>
+      </div>
+      <div id="mobile-nav-menu" class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col py-2">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Blogs</a>
+          <div class="px-5 py-3 border-t border-slate-100">
+            <a href="contact" class="w-full bg-black text-white font-medium text-sm rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path d="M7 17L17 7M17 7H7M17 7V17" /></svg>
+              <span>Get in touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- END: Navbar -->
+
+  <!-- BEGIN: Hero -->
+  <section class="pt-36 pb-16 px-6 bg-white border-b border-slate-100">
+    <div class="max-w-4xl mx-auto">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Legal</span>
+      <h1 class="text-5xl sm:text-6xl font-black tracking-tighter text-slate-900 leading-none mb-4">Privacy Policy</h1>
+      <p class="text-slate-500 text-sm">Last updated: <strong class="text-slate-700">August 17, 2026</strong></p>
+    </div>
+  </section>
+  <!-- END: Hero -->
+
+  <!-- BEGIN: Content -->
+  <main class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-12 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+        <p class="text-slate-600 text-sm leading-relaxed">
+          At <strong class="text-slate-900">Bigmonks Technologies</strong> ("we", "our", or "us"), your privacy is a top priority. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit <a href="https://www.bigmonks.com" class="text-slate-900 font-semibold underline underline-offset-2">www.bigmonks.com</a> or use any of our services. Please read this policy carefully. If you disagree with its terms, please discontinue use of our site.
+        </p>
+      </div>
+
+      <div class="space-y-12 text-slate-700 text-sm leading-relaxed">
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">1. Information We Collect</h2>
+          <p class="mb-3">We may collect information about you in a variety of ways, including:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Personal Data:</strong> Identifiable information such as your name, email address, phone number, and company name that you voluntarily provide when filling out contact or inquiry forms.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Derivative Data:</strong> Information our servers automatically collect when you access our site, such as your IP address, browser type, operating system, referring URLs, and pages visited.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Mobile Device Data:</strong> Device information such as your mobile device ID, model, and manufacturer if you access our site from a mobile device.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Financial Data:</strong> Payment method details when engaging paid services. We store only minimal financial information; all other financial data is handled by our payment processors.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">2. How We Use Your Information</h2>
+          <p class="mb-3">We use the information we collect to:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Respond to your inquiries and provide customer support.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Process transactions and send related information, including confirmations and invoices.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Send administrative updates about our services, terms, and policies.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Deliver targeted marketing and promotional communications where you have opted in.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Monitor and analyse usage trends to improve your experience.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Prevent fraudulent transactions and protect against criminal activity.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span>Comply with applicable laws and regulations in India and Canada.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">3. Disclosure of Your Information</h2>
+          <p class="mb-3">We may share your information in the following situations:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">By Law or to Protect Rights:</strong> When required to respond to legal process or to protect the rights, property, and safety of others.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Third-Party Service Providers:</strong> With vendors that perform services on our behalf, including payment processing, data analysis, email delivery, and hosting.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Business Transfers:</strong> In connection with any merger, sale of company assets, or acquisition of our business.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">With Your Consent:</strong> For any other purpose with your explicit consent.</span></li>
+          </ul>
+          <p class="mt-4">We do <strong class="text-slate-900">not</strong> sell, trade, or otherwise transfer your personally identifiable information to outside parties for marketing purposes.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">4. Cookies &amp; Tracking Technologies</h2>
+          <p class="mb-3">We may use cookies, web beacons, and tracking pixels to customise the site and improve your experience. Your personal information is not collected through these technologies alone.</p>
+          <p>Most browsers accept cookies by default. You can remove or reject cookies in your browser settings, but note that doing so may affect site functionality.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">5. Third-Party Websites</h2>
+          <p>Our website may contain links to third-party websites and social media profiles. We have no control over and assume no responsibility for their content or privacy practices. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">6. Security of Your Information</h2>
+          <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps, no security measures are perfect, and no data transmission can be guaranteed against interception.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">7. Your Data Rights</h2>
+          <p class="mb-3">Depending on your location (India or Canada), you may have the right to:</p>
+          <ul class="space-y-3 ml-2">
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Access</strong> copies of your personal data.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Rectify</strong> any inaccurate or incomplete information.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Erase</strong> your personal data, under certain conditions.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Object</strong> to our processing of your data, under certain conditions.</span></li>
+            <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-slate-900 mt-2 shrink-0"></span><span><strong class="text-slate-900">Portability</strong> — request that we transfer your data to another organisation or directly to you.</span></li>
+          </ul>
+          <p class="mt-4">To exercise any of these rights, contact us at <a href="mailto:info@bigmonks.com" class="text-slate-900 font-semibold underline underline-offset-2">info@bigmonks.com</a>. We will respond within 30 days.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">8. Children's Privacy</h2>
+          <p>We do not knowingly collect personal information from anyone under the age of 13. If we learn we have collected such information, we will delete it as quickly as possible. If you believe a child has provided us with personal data, please contact us immediately.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">9. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal or regulatory reasons. We will notify you by updating the "Last updated" date at the top of this page. Continued use of our site after any changes constitutes acceptance of the updated policy.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-extrabold text-slate-900 mb-4 pb-2 border-b border-slate-200">10. Contact Us</h2>
+          <p class="mb-6">If you have questions or comments about this Privacy Policy, or wish to exercise your data rights, please contact us:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-3">India HQ</p>
+              <p class="font-bold text-slate-900 text-sm">Bigmonks Technologies</p>
+              <p class="text-slate-600 text-sm mt-1">Kakkanad, Ernakulam,<br>Kerala – 682037, India</p>
+              <a href="tel:+918848806406" class="block text-slate-900 font-semibold text-sm mt-3 hover:text-slate-600 transition-colors">+91 88488 06406</a>
+              <a href="mailto:info@bigmonks.com" class="block text-slate-900 font-semibold text-sm mt-1 hover:text-slate-600 transition-colors">info@bigmonks.com</a>
+            </div>
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-200">
+              <p class="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-3">Canada Hub</p>
+              <p class="font-bold text-slate-900 text-sm">Bigmonks Technologies</p>
+              <p class="text-slate-600 text-sm mt-1">576 Prince St Unit 1,<br>Truro, NS B2N 1G3, Canada</p>
+              <a href="tel:+19027004454" class="block text-slate-900 font-semibold text-sm mt-3 hover:text-slate-600 transition-colors">+1 902-700-4454</a>
+              <a href="mailto:info@bigmonks.com" class="block text-slate-900 font-semibold text-sm mt-1 hover:text-slate-600 transition-colors">info@bigmonks.com</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+  <!-- END: Content -->
+
+  <!-- BEGIN: Footer -->
+  <footer class="pt-16 px-6 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="relative pt-12 border-t border-slate-200 overflow-hidden px-2 sm:px-4">
+        <div class="relative z-20 flex flex-col sm:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 gap-3">
+          <a href="privacy-policy" class="text-slate-950 font-extrabold py-1">Privacy Policy</a>
+          <span class="text-slate-400">BIGMONKS TECHNOLOGIES &bull; KERALA, INDIA &bull; CANADA</span>
+          <a href="terms-and-conditions" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Terms &amp; Conditions</a>
+        </div>
+        <p class="huge-title text-slate-900 text-[4rem] sm:text-[9.5rem] md:text-[13rem] lg:text-[15.5rem] -mb-2 sm:-mb-6 md:-mb-8 leading-[0.85] tracking-tight select-none pointer-events-none block text-center w-full max-w-full -translate-x-2 sm:-translate-x-4 md:-translate-x-6">BIGMONKS</p>
+      </div>
+    </div>
+  </footer>
+  <!-- END: Footer -->
+
+  <script src="app.js"></script>
+</body>
+</html>

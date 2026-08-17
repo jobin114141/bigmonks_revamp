@@ -1,0 +1,270 @@
+/* ─── Replica Floating Pill Navbar ─────────────────────────────────── */
+.nav-burger-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #2d2d2d;
+  border-radius: 2px;
+  transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Open state — burger bars animate to X */
+#main-nav.mobile-open .nav-burger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+#main-nav.mobile-open .nav-burger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#main-nav.mobile-open .nav-burger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile dropdown panel open state */
+#mobile-nav-menu.nav-menu-open {
+  max-height: 360px;
+  opacity: 1;
+}
+
+/* Mobile nav links */
+.mobile-nav-item {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #333333 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-left-color 0.15s ease;
+}
+
+.mobile-nav-item:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: #000000 !important;
+}
+
+.mobile-nav-item.nav-active {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #000000 !important;
+  border-left-color: #2d2d2d !important;
+  font-weight: 700 !important;
+}
+
+/* Nav Links - Desktop */
+.nav-link {
+  color: #111827 !important;
+  text-decoration: none;
+  font-weight: 400 !important;
+  font-size: 0.985rem !important;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  position: relative;
+  padding-bottom: 2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.nav-link:hover {
+  color: #000000 !important;
+}
+
+.nav-link.nav-active {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.nav-link.nav-active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #2d2d2d;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+
+
+/* Root Typography Scaling - Proportional global text size reduction */
+html {
+  font-size: 14.5px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@layer utilities {
+  .huge-title {
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .card-rounded {
+    border-radius: 2.25rem;
+  }
+
+  .accent-orange {
+    background-color: #0c0c0c;
+  }
+
+  .text-accent-orange {
+    color: #0c0c0c;
+  }
+
+  .dark-section {
+    background-color: #0c0c0c;
+  }
+
+  .pill-badge {
+    border: 1px solid #e5e7eb;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+}
+
+/* Floating Glassmorphism Pill Navigation & Smart Auto-Hide */
+#main-nav {
+  background-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+  will-change: transform;
+}
+
+#main-nav.nav-hidden {
+  transform: translateY(-130%);
+}
+
+#main-nav.scrolled {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Modal Open State Styles */
+.modal-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.modal-active>div {
+  transform: scale(1) translateY(0) !important;
+}
+
+/* Service Card Filter Hide/Show */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card.hidden-card {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  display: none !important;
+}
+
+/* Service Tab Button Active state */
+.service-tab-btn.active {
+  background-color: #0c0c0c !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0c0c0c;
+}
+
+/* Pulse Glow Keyframes */
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(12, 12, 12, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(12, 12, 12, 0.4);
+  }
+}
+
+.glow-orange {
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+/* Quote Radio Card Checked state */
+.quote-mode-card:has(input:checked) {
+  border-color: #0c0c0c;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframe Animations */
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDownFade 0.3s ease forwards;
+}
+
+/* Fast Scroll Reveal Animations for Services & Text */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Service Card Filter Hide Class */
+.hidden-card {
+  display: none !important;
+}
