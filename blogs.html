@@ -12,7 +12,12 @@
   <meta name="keywords"
     content="Bigmonks Blogs, Engineering Insights, GraphQL Redis Microservices, SwiftUI Retail POS, AWS Lambda Serverless, LLM Vector Search, NextJS 15 Performance" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link rel="canonical" href="https://www.bigmonks.com/blogs" />
+  <script>
+    if (window.location.protocol.startsWith('http')) {
+      window.location.href = 'blogs.php' + window.location.search;
+    }
+  </script>
+  <link rel="canonical" href="https://www.bigmonks.com/blogs.php" />
 
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:type" content="blog" />
