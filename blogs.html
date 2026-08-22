@@ -628,27 +628,25 @@
       }
 
       grid.innerHTML = filtered.map(b => `
-        <div class="blog-card ${b.category} bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+        <div onclick="window.location.href='blog-detail?slug=${b.slug}'" class="blog-card ${b.category} bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer">
           <div>
-            <a href="blog-detail?slug=${b.slug}" class="block overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+            <div class="overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
               <img src="${b.image}" alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='images/blog_hero_img.png';" />
-            </a>
+            </div>
             <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">${b.categoryLabel}</div>
-            <a href="blog-detail?slug=${b.slug}" class="block">
-              <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors line-clamp-2">
-                ${b.title}
-              </h3>
-            </a>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors line-clamp-2">
+              ${b.title}
+            </h3>
             <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal line-clamp-3">
               ${b.excerpt}
             </p>
           </div>
           <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
             <span class="font-bold text-slate-900">${b.date}</span>
-            <a href="blog-detail?slug=${b.slug}" class="text-black font-bold group-hover:underline flex items-center gap-1">
+            <span class="text-black font-bold group-hover:underline flex items-center gap-1">
               <span>Read</span>
               <span>&rarr;</span>
-            </a>
+            </span>
           </div>
         </div>
       `).join('');
