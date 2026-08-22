@@ -1,29 +1,19 @@
-# Enable MultiViews for automatic extension matching
+# Enable MultiViews for automatic extension matching on Hostinger LiteSpeed
 Options +MultiViews
 
 # Set default index file
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 
 # Fallback Rewrite Rules
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Route /blogs to blogs.php
-  RewriteRule ^blogs/?$ blogs.php [L,QSA]
-  RewriteRule ^admin/?$ admin.php [L,QSA]
-
-  # If not a real directory and .php file exists, serve it
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME}.php -f
-  RewriteRule ^(.*)$ $1.php [L,QSA]
-
   # If not a real directory and .html file exists, serve it
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L,QSA]
 </IfModule>
-
 
 
 

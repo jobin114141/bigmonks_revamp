@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog CMS Admin Dashboard | Bigmonks Tech Labs</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Favicon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0c0c0c',
+              gray: '#f3f4f6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="text-slate-900 bg-slate-950 font-sans antialiased min-h-screen">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[120] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Authentication Security Modal -->
+  <div id="auth-modal" class="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-lg flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-200 text-center">
+      <div class="w-16 h-16 bg-slate-900 text-white rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+      </div>
+      <span class="pill-badge uppercase font-bold text-xs border-slate-300 mb-2">RESTRICTED ACCESS</span>
+      <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight mb-2">Blog CMS Admin</h2>
+      <p class="text-xs text-slate-500 mb-6">Enter the administrative passcode to manage blog posts and upload media.</p>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <input type="password" id="admin-passcode" placeholder="Enter passcode (default: admin123)" required
+            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:border-slate-900 text-sm font-mono text-center tracking-widest" />
+        </div>
+        <button type="submit"
+          class="w-full bg-black text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider hover:bg-slate-800 transition-colors shadow-md">
+          Unlock CMS Dashboard
+        </button>
+      </form>
+      <p class="text-[11px] text-slate-400 mt-4">Hint: Passcode is <code class="bg-slate-100 px-1 py-0.5 rounded font-bold text-slate-800">admin123</code></p>
+    </div>
+  </div>
+
+  <!-- Admin Main Dashboard Wrapper -->
+  <div id="admin-app" class="hidden min-h-screen flex flex-col">
+    
+    <!-- Top Nav Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        
+        <div class="flex items-center gap-4">
+          <a href="blogs" class="flex items-center gap-2 group">
+            <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo" class="h-7 w-auto object-contain brightness-200" />
+          </a>
+          <span class="text-slate-600 font-mono">|</span>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">CMS ADMIN DASHBOARD</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="exportBackupJSON()" title="Export JSON Backup" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-700 flex items-center gap-2 transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            <span class="hidden sm:inline">Export JSON</span>
+          </button>
+          
+          <label class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-700 flex items-center gap-2 cursor-pointer transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            <span class="hidden sm:inline">Import JSON</span>
+            <input type="file" accept=".json" onchange="importBackupJSON(event)" class="hidden" />
+          </label>
+
+          <a href="blogs" target="_blank" class="bg-white hover:bg-slate-100 text-black px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm">
+            <span>View Live Site</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Workspace Content -->
+    <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-8">
+      
+      <!-- Top Stats Bar -->
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+          <div>
+            <p class="text-xs font-mono font-bold text-slate-400 uppercase">Total Articles</p>
+            <h3 id="stat-total" class="text-2xl font-extrabold text-white mt-1">0</h3>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-slate-800 text-slate-300 flex items-center justify-center font-mono font-bold">#</div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+          <div>
+            <p class="text-xs font-mono font-bold text-emerald-400 uppercase">Published</p>
+            <h3 id="stat-published" class="text-2xl font-extrabold text-white mt-1">0</h3>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-950/60 text-emerald-400 flex items-center justify-center font-bold">✓</div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+          <div>
+            <p class="text-xs font-mono font-bold text-amber-400 uppercase">Drafts</p>
+            <h3 id="stat-drafts" class="text-2xl font-extrabold text-white mt-1">0</h3>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-amber-950/60 text-amber-400 flex items-center justify-center font-bold">✎</div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex items-center justify-between">
+          <button onclick="openEditorModal()" class="w-full bg-white hover:bg-slate-100 text-black py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 4v16m8-8H4"/></svg>
+            <span>Create New Article</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Articles Management Table Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+        
+        <!-- Table Toolbar -->
+        <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
+          <div class="relative flex-1 max-w-md">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="table-search" oninput="renderArticlesTable()" placeholder="Search articles by title, author, or tag..."
+              class="w-full bg-slate-950 text-white placeholder-slate-500 pl-10 pr-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600" />
+          </div>
+
+          <div class="flex items-center gap-2 overflow-x-auto">
+            <button onclick="filterTableStatus('all', this)" class="table-filter-btn active-tab bg-white text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition-all">All</button>
+            <button onclick="filterTableStatus('published', this)" class="table-filter-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl text-xs hover:bg-slate-700 transition-all">Published</button>
+            <button onclick="filterTableStatus('draft', this)" class="table-filter-btn bg-slate-800 text-slate-300 font-bold px-4 py-2 rounded-xl text-xs hover:bg-slate-700 transition-all">Drafts</button>
+            <button onclick="resetSeedData()" title="Reset Seed Data" class="bg-red-950/40 hover:bg-red-900/60 text-red-300 border border-red-800/60 font-bold px-3.5 py-2 rounded-xl text-xs ml-2 transition-all">Reset Default Posts</button>
+          </div>
+        </div>
+
+        <!-- Table View -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-950/60 text-slate-400 font-mono uppercase tracking-wider border-b border-slate-800">
+              <tr>
+                <th class="px-6 py-4">Article</th>
+                <th class="px-6 py-4">Category</th>
+                <th class="px-6 py-4">Author</th>
+                <th class="px-6 py-4">Date</th>
+                <th class="px-6 py-4">Status</th>
+                <th class="px-6 py-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="articles-tbody" class="divide-y divide-slate-800/60">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ARTICLE EDITOR MODAL / DRAWER -->
+  <div id="editor-modal" class="fixed inset-0 z-[110] bg-slate-950/80 backdrop-blur-sm flex justify-end opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-slate-900 w-full max-w-3xl h-full border-l border-slate-800 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 overflow-hidden" id="editor-card">
+      
+      <!-- Drawer Header -->
+      <div class="px-6 py-5 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+        <div>
+          <span id="editor-mode-badge" class="font-mono text-[10px] uppercase tracking-widest text-emerald-400 font-bold">CREATE NEW ARTICLE</span>
+          <h3 id="editor-modal-title" class="text-xl font-bold text-white tracking-tight">Article Details</h3>
+        </div>
+        <button onclick="closeEditorModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Form Body -->
+      <form id="article-form" onsubmit="handleSaveArticle(event)" class="flex-1 overflow-y-auto p-6 space-y-6">
+        <input type="hidden" id="form-id" value="" />
+
+        <!-- Title -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Article Title *</label>
+          <input type="text" id="form-title" required oninput="autoGenerateSlug()" placeholder="e.g., Building High-Concurrency Microservices with Go"
+            class="w-full bg-slate-950 text-white placeholder-slate-600 px-4 py-3 rounded-xl border border-slate-800 text-sm focus:outline-none focus:border-slate-600 font-semibold" />
+        </div>
+
+        <!-- Slug -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">URL Slug *</label>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-slate-500">/blog-detail?slug=</span>
+            <input type="text" id="form-slug" required placeholder="building-high-concurrency-microservices"
+              class="flex-1 bg-slate-950 text-slate-300 px-4 py-2.5 rounded-xl border border-slate-800 text-xs font-mono focus:outline-none focus:border-slate-600" />
+          </div>
+        </div>
+
+        <!-- Row: Category & Read Time -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Category *</label>
+            <select id="form-category" required class="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600">
+              <option value="cloud">Cloud &amp; DevOps</option>
+              <option value="ai">AI &amp; Machine Learning</option>
+              <option value="mobile">Mobile Platforms</option>
+              <option value="retail">Omnichannel Retail</option>
+              <option value="web">Web Platforms</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Read Time</label>
+            <input type="text" id="form-readtime" placeholder="e.g., 5 Min Read" value="5 Min Read"
+              class="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Status</label>
+            <select id="form-status" class="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600">
+              <option value="published">Published</option>
+              <option value="draft">Draft</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row: Author Name & Role -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Author Name</label>
+            <input type="text" id="form-author" placeholder="Alex Rivera" value="Bigmonks Tech Labs"
+              class="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Author Role / Title</label>
+            <input type="text" id="form-author-role" placeholder="Principal Cloud Architect" value="Engineering Contributor"
+              class="w-full bg-slate-950 text-white px-4 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600" />
+          </div>
+        </div>
+
+        <!-- IMAGE UPLOADER BOX -->
+        <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4">
+          <label class="block text-xs font-bold uppercase tracking-wider text-white">Cover Image Upload &amp; Preview *</label>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- File Upload Dropzone -->
+            <div class="border-2 border-dashed border-slate-800 hover:border-slate-600 rounded-xl p-4 text-center cursor-pointer bg-slate-900/50 transition-colors relative">
+              <input type="file" id="form-image-file" accept="image/*" onchange="handleImageFileSelect(event)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" />
+              <svg class="w-6 h-6 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <p class="text-xs font-bold text-slate-300">Click to upload image file</p>
+              <p class="text-[10px] text-slate-500 mt-1">PNG, JPG, WebP, SVG (Auto Base64)</p>
+            </div>
+
+            <!-- Image URL Input -->
+            <div class="flex flex-col justify-center space-y-2">
+              <span class="text-[10px] font-mono text-slate-400 uppercase text-center">- OR Paste Image URL -</span>
+              <input type="text" id="form-image-url" oninput="updateImagePreview(this.value)" placeholder="e.g. images/blog_hero_img.png or https://..."
+                class="w-full bg-slate-900 text-white placeholder-slate-600 px-3.5 py-2.5 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600" />
+            </div>
+          </div>
+
+          <!-- Preview Container -->
+          <div class="mt-3">
+            <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">Image Preview:</span>
+            <div class="aspect-video w-full max-h-48 bg-slate-900 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-center">
+              <img id="image-preview" src="images/blog_hero_img.png" alt="Preview" class="w-full h-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Excerpt -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Short Excerpt / Card Description *</label>
+          <textarea id="form-excerpt" rows="2" placeholder="Brief summary of article shown on category cards..." required
+            class="w-full bg-slate-950 text-white placeholder-slate-600 px-4 py-3 rounded-xl border border-slate-800 text-xs focus:outline-none focus:border-slate-600 resize-none"></textarea>
+        </div>
+
+        <!-- Content Formatting Toolbar & Textarea -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300">Full Article Body Content (HTML / Markdown) *</label>
+            <div class="flex gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
+              <button type="button" onclick="insertFormatting('h2')" class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-300 hover:text-white rounded">H2</button>
+              <button type="button" onclick="insertFormatting('h3')" class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-300 hover:text-white rounded">H3</button>
+              <button type="button" onclick="insertFormatting('p')" class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-300 hover:text-white rounded">Para</button>
+              <button type="button" onclick="insertFormatting('blockquote')" class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-300 hover:text-white rounded">Quote</button>
+              <button type="button" onclick="insertFormatting('code')" class="px-2 py-1 text-[10px] font-mono bg-slate-800 text-slate-300 hover:text-white rounded">Code</button>
+              <button type="button" onclick="insertFormatting('ul')" class="px-2 py-1 text-[10px] font-bold bg-slate-800 text-slate-300 hover:text-white rounded">List</button>
+            </div>
+          </div>
+          <textarea id="form-content" rows="12" placeholder="Write full HTML content here..." required
+            class="w-full bg-slate-950 text-slate-100 placeholder-slate-600 p-4 rounded-xl border border-slate-800 font-mono text-xs focus:outline-none focus:border-slate-600 leading-relaxed"></textarea>
+        </div>
+
+        <!-- Drawer Footer Buttons -->
+        <div class="pt-4 border-t border-slate-800 flex items-center justify-end gap-3 sticky bottom-0 bg-slate-900 py-3">
+          <button type="button" onclick="closeEditorModal()" class="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 text-xs font-bold hover:bg-slate-800">Cancel</button>
+          <button type="submit" class="px-6 py-2.5 rounded-xl bg-white text-black font-extrabold text-xs uppercase tracking-wider hover:bg-slate-200 transition-colors shadow-md">Save &amp; Publish Article</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Dashboard JavaScript -->
+  <script src="app.js"></script>
+  <script src="data/cms-store.js"></script>
+  <script>
+    let activeFilterStatus = 'all';
+    let currentBase64Image = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if previously unlocked in this session
+      if (sessionStorage.getItem('bigmonks_cms_unlocked') === 'true') {
+        unlockCMS();
+      }
+    });
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const code = document.getElementById('admin-passcode').value.trim();
+      if (code === 'admin123' || code === 'admin') {
+        sessionStorage.setItem('bigmonks_cms_unlocked', 'true');
+        unlockCMS();
+        showToast('CMS Dashboard Unlocked!');
+      } else {
+        alert('Incorrect passcode. Default passcode is: admin123');
+      }
+    }
+
+    function unlockCMS() {
+      document.getElementById('auth-modal').classList.add('hidden');
+      document.getElementById('admin-app').classList.remove('hidden');
+      renderArticlesTable();
+    }
+
+    function renderArticlesTable() {
+      const blogs = window.blogStore.getAll();
+      const search = (document.getElementById('table-search')?.value || '').toLowerCase();
+      const tbody = document.getElementById('articles-tbody');
+
+      let filtered = blogs.filter(b => {
+        const matchesStatus = activeFilterStatus === 'all' || b.status === activeFilterStatus;
+        const matchesSearch = !search || 
+          b.title.toLowerCase().includes(search) || 
+          b.author.toLowerCase().includes(search) || 
+          b.categoryLabel.toLowerCase().includes(search);
+        return matchesStatus && matchesSearch;
+      });
+
+      // Update Stats
+      document.getElementById('stat-total').textContent = blogs.length;
+      document.getElementById('stat-published').textContent = blogs.filter(b => b.status === 'published' || !b.status).length;
+      document.getElementById('stat-drafts').textContent = blogs.filter(b => b.status === 'draft').length;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="px-6 py-12 text-center text-slate-500 font-mono text-xs">
+              No articles found matching criteria.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(b => `
+        <tr class="hover:bg-slate-800/40 transition-colors">
+          <td class="px-6 py-4 flex items-center gap-3">
+            <img src="${b.image}" alt="" class="w-12 h-10 object-cover rounded-lg bg-slate-800 border border-slate-700 shrink-0" onerror="this.onerror=null; this.src='images/blog_hero_img.png';" />
+            <div>
+              <a href="blog-detail?slug=${b.slug}" target="_blank" class="font-bold text-white hover:underline line-clamp-1">${b.title}</a>
+              <span class="text-[10px] font-mono text-slate-500">/blog-detail?slug=${b.slug}</span>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <span class="pill-badge bg-slate-800 text-slate-200 border-slate-700 text-[10px] font-bold uppercase">${b.categoryLabel}</span>
+          </td>
+          <td class="px-6 py-4 text-slate-300 font-semibold">${b.author}</td>
+          <td class="px-6 py-4 font-mono text-slate-400">${b.date}</td>
+          <td class="px-6 py-4">
+            ${b.status === 'draft' ? 
+              `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-950 text-amber-300 border border-amber-800">DRAFT</span>` : 
+              `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">PUBLISHED</span>`
+            }
+          </td>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button onclick="editArticle('${b.id}')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors">Edit</button>
+            <a href="blog-detail?slug=${b.slug}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition-colors">View</a>
+            <button onclick="deleteArticle('${b.id}')" class="px-3 py-1.5 rounded-lg bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-800/60 font-bold text-xs transition-colors">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterTableStatus(status, el) {
+      activeFilterStatus = status;
+      document.querySelectorAll('.table-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-white', 'text-slate-950');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      el.classList.remove('bg-slate-800', 'text-slate-300');
+      el.classList.add('bg-white', 'text-slate-950');
+      renderArticlesTable();
+    }
+
+    function autoGenerateSlug() {
+      const title = document.getElementById('form-title').value;
+      const slugInput = document.getElementById('form-slug');
+      if (!slugInput.dataset.manualEdit) {
+        slugInput.value = window.blogStore.slugify(title);
+      }
+    }
+
+    function openEditorModal(article = null) {
+      const modal = document.getElementById('editor-modal');
+      const card = document.getElementById('editor-card');
+      const titleEl = document.getElementById('editor-modal-title');
+      const badgeEl = document.getElementById('editor-mode-badge');
+
+      currentBase64Image = '';
+
+      if (article) {
+        titleEl.textContent = 'Edit Article';
+        badgeEl.textContent = 'EDIT EXISTING POST';
+        document.getElementById('form-id').value = article.id;
+        document.getElementById('form-title').value = article.title;
+        document.getElementById('form-slug').value = article.slug;
+        document.getElementById('form-category').value = article.category || 'cloud';
+        document.getElementById('form-readtime').value = article.readTime || '5 Min Read';
+        document.getElementById('form-status').value = article.status || 'published';
+        document.getElementById('form-author').value = article.author;
+        document.getElementById('form-author-role').value = article.authorRole || '';
+        document.getElementById('form-image-url').value = article.image || '';
+        document.getElementById('form-excerpt').value = article.excerpt || '';
+        document.getElementById('form-content').value = article.content || '';
+        updateImagePreview(article.image);
+      } else {
+        titleEl.textContent = 'Create New Article';
+        badgeEl.textContent = 'CREATE NEW POST';
+        document.getElementById('article-form').reset();
+        document.getElementById('form-id').value = '';
+        document.getElementById('form-image-url').value = 'images/blog_hero_img.png';
+        updateImagePreview('images/blog_hero_img.png');
+      }
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      card.classList.remove('translate-x-full');
+    }
+
+    function closeEditorModal() {
+      const modal = document.getElementById('editor-modal');
+      const card = document.getElementById('editor-card');
+      card.classList.add('translate-x-full');
+      setTimeout(() => {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+      }, 200);
+    }
+
+    function editArticle(id) {
+      const article = window.blogStore.getById(id);
+      if (article) openEditorModal(article);
+    }
+
+    function deleteArticle(id) {
+      if (confirm('Are you sure you want to delete this article?')) {
+        window.blogStore.deleteBlog(id);
+        renderArticlesTable();
+        showToast('Article deleted');
+      }
+    }
+
+    async function handleImageFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      try {
+        const dataUrl = await window.blogStore.readFileAsDataURL(file);
+        currentBase64Image = dataUrl;
+        document.getElementById('form-image-url').value = '';
+        updateImagePreview(dataUrl);
+        showToast('Image uploaded & converted successfully!');
+      } catch (err) {
+        alert('Failed to read image file.');
+      }
+    }
+
+    function updateImagePreview(url) {
+      const preview = document.getElementById('image-preview');
+      if (url) {
+        preview.src = url;
+      }
+    }
+
+    function insertFormatting(type) {
+      const textarea = document.getElementById('form-content');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const text = textarea.value;
+      const selected = text.substring(start, end) || 'Sample text';
+
+      let insert = '';
+      switch (type) {
+        case 'h2': insert = `<h2>${selected}</h2>\n`; break;
+        case 'h3': insert = `<h3>${selected}</h3>\n`; break;
+        case 'p': insert = `<p>${selected}</p>\n`; break;
+        case 'blockquote': insert = `<blockquote class="border-l-4 border-black pl-4 py-2 my-4 italic text-slate-800">${selected}</blockquote>\n`; break;
+        case 'code': insert = `<pre><code>// Code snippet\n${selected}</code></pre>\n`; break;
+        case 'ul': insert = `<ul>\n  <li>${selected}</li>\n  <li>Item 2</li>\n</ul>\n`; break;
+      }
+
+      textarea.value = text.substring(0, start) + insert + text.substring(end);
+    }
+
+    function handleSaveArticle(e) {
+      e.preventDefault();
+
+      const imageVal = currentBase64Image || document.getElementById('form-image-url').value || 'images/blog_hero_img.png';
+
+      const blogData = {
+        id: document.getElementById('form-id').value || null,
+        title: document.getElementById('form-title').value.trim(),
+        slug: document.getElementById('form-slug').value.trim(),
+        category: document.getElementById('form-category').value,
+        readTime: document.getElementById('form-readtime').value.trim(),
+        status: document.getElementById('form-status').value,
+        author: document.getElementById('form-author').value.trim(),
+        authorRole: document.getElementById('form-author-role').value.trim(),
+        image: imageVal,
+        excerpt: document.getElementById('form-excerpt').value.trim(),
+        content: document.getElementById('form-content').value.trim(),
+        date: window.blogStore.formatDate(new Date())
+      };
+
+      window.blogStore.saveBlog(blogData);
+      closeEditorModal();
+      renderArticlesTable();
+      showToast('Article saved & published!');
+    }
+
+    function exportBackupJSON() {
+      window.blogStore.exportJSON();
+      showToast('Exported blogs backup JSON');
+    }
+
+    function importBackupJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const success = window.blogStore.importJSON(e.target.result);
+        if (success) {
+          renderArticlesTable();
+          showToast('Imported blogs backup successfully!');
+        } else {
+          alert('Invalid JSON file format.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetSeedData() {
+      if (confirm('Reset blog posts to original 6 default engineering articles? Custom edits will be overwritten.')) {
+        window.blogStore.resetToDefaults();
+        renderArticlesTable();
+        showToast('Reset to default seed articles.');
+      }
+    }
+  </script>
+</body>
+
+</html>

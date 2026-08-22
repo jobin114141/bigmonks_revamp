@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Primary Meta Tags -->
+  <title id="page-title">Blog Article | Bigmonks Tech Labs</title>
+  <meta id="page-meta-title" name="title" content="Engineering Insights | Bigmonks Tech Labs" />
+  <meta id="page-meta-desc" name="description"
+    content="Read deep-dive technical insights, architecture case studies, and engineering practices from Bigmonks experts." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <!-- Favicon Links -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/bigmonks-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0c0c0c',
+              gray: '#f3f4f6'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Rich Article Typography Formatting */
+    .article-body h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+    .article-body h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+      color: #334155;
+    }
+    .article-body ul {
+      list-style-type: disc;
+    }
+    .article-body ol {
+      list-style-type: decimal;
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+    .article-body blockquote {
+      border-left: 4px solid #0f172a;
+      padding-left: 1.25rem;
+      margin-top: 1.75rem;
+      margin-bottom: 1.75rem;
+      font-style: italic;
+      font-weight: 500;
+      color: #1e293b;
+      font-size: 1.1rem;
+    }
+    .article-body pre {
+      background-color: #0f172a;
+      color: #f8fafc;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      margin-bottom: 1.75rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+    .article-body code {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.375rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.875rem;
+    }
+    .article-body pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .article-body img {
+      border-radius: 1.25rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      width: 100%;
+      height: auto;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="text-slate-900 bg-white font-sans antialiased selection:bg-slate-900 selection:text-white">
+
+  <!-- Top Reading Progress Indicator Bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-1 bg-black z-[110] transition-all duration-150 w-0"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- BEGIN: Centered Floating Replica Pill Navbar Header -->
+  <nav id="main-nav"
+    class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-max max-w-[95vw]">
+
+    <!-- DESKTOP Replica Navbar Pill (md and up) -->
+    <div
+      class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full hidden md:flex flex-nowrap items-center gap-5 md:gap-6 lg:gap-8 pl-5 md:pl-6 pr-2 md:pr-2.5 py-1.5 shadow-xl shadow-slate-900/5 text-sm transition-all duration-300">
+      
+      <!-- Brand Logo Left -->
+      <a href="./" class="flex items-center gap-2 group shrink-0 mr-2 md:mr-4 lg:mr-6" aria-label="Bigmonks Home">
+        <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Technologies Logo"
+          class="h-7 md:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <!-- Center Navigation Links -->
+      <div class="flex items-center gap-5 md:gap-6 lg:gap-8 text-slate-900 shrink-0">
+        <a href="who-we-are" class="nav-link whitespace-nowrap shrink-0">Who We Are</a>
+        <a href="what-we-do" class="nav-link whitespace-nowrap shrink-0">What We Do</a>
+        <a href="blogs" class="nav-link nav-active whitespace-nowrap shrink-0">Blogs</a>
+      </div>
+
+      <!-- Right CTA Button -->
+      <a href="contact"
+        class="bg-black hover:bg-black text-white font-medium text-sm rounded-full px-5 py-2.5 md:py-3 flex items-center gap-2.5 transition-all shadow-sm hover:shadow-md cursor-pointer group shrink-0 ml-4 md:ml-6 lg:ml-8">
+        <svg class="w-4 h-4 text-white transform group-hover:rotate-45 transition-all"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17L17 7M17 7H7M17 7V17" />
+        </svg>
+        <span class="whitespace-nowrap">Get in touch</span>
+      </a>
+    </div>
+
+    <!-- MOBILE Replica Navbar Pill (below md) -->
+    <div class="md:hidden">
+      <div class="bg-white/95 backdrop-blur-md border border-slate-200/80 rounded-full flex items-center justify-between px-5 py-1.5 shadow-xl shadow-slate-900/5">
+        <a href="./" class="flex items-center gap-2" aria-label="Bigmonks Home">
+          <img src="images/bigmonks wordmark sq (1) 2.png" alt="Bigmonks Logo"
+            class="h-6 w-auto object-contain" />
+        </a>
+
+        <div class="flex items-center gap-3">
+          <button id="mobile-nav-btn" onclick="toggleMobileNav()" aria-label="Toggle menu"
+            class="w-8 h-8 flex flex-col justify-center items-center gap-[5px] focus:outline-none">
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+            <span class="nav-burger-bar"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-nav-menu"
+        class="bg-white/95 backdrop-blur-md border border-slate-200/80 mt-2 rounded-2xl overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col py-2">
+          <a href="who-we-are" onclick="closeMobileNav()" class="nav-link mobile-nav-item">Who We Are</a>
+          <a href="what-we-do" onclick="closeMobileNav()" class="nav-link mobile-nav-item">What We Do</a>
+          <a href="blogs" onclick="closeMobileNav()" class="nav-link mobile-nav-item nav-active">Blogs</a>
+          <div class="px-5 py-3 border-t border-slate-100">
+            <button onclick="openQuoteModal(); closeMobileNav();"
+              class="w-full bg-black text-white font-medium text-sm rounded-full py-2.5 flex items-center justify-center gap-2 shadow-sm">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2">
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+              <span>Get in touch</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- END: Centered Floating Replica Pill Navbar Header -->
+
+  <!-- Main Container -->
+  <main class="pt-28 sm:pt-36 pb-20 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Back Link -->
+      <div class="mb-8">
+        <a href="blogs" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-black transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to all articles
+        </a>
+      </div>
+
+      <!-- Article Header -->
+      <article id="article-container" class="space-y-8">
+        <!-- Content injected dynamically via JavaScript -->
+        <div class="text-center py-20">
+          <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-slate-900 border-t-transparent"></div>
+          <p class="mt-4 text-slate-500 text-sm font-medium">Loading article...</p>
+        </div>
+      </article>
+
+      <!-- Share & Author Footer Box -->
+      <div id="article-footer-box" class="hidden mt-16 pt-10 border-t border-slate-200">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200/80">
+          
+          <div class="flex items-center gap-4">
+            <img id="author-footer-img" src="images/apple-touch-icon.png" alt="Author" class="w-14 h-14 rounded-full object-cover border border-slate-200 shadow-sm" />
+            <div>
+              <h4 id="author-footer-name" class="font-bold text-slate-900 text-base">Bigmonks Tech Labs</h4>
+              <p id="author-footer-role" class="text-xs text-slate-500 font-medium">Engineering Contributor</p>
+            </div>
+          </div>
+
+          <!-- Share Actions -->
+          <div class="flex items-center gap-2.5">
+            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">Share:</span>
+            <button onclick="shareArticle('twitter')" title="Share on Twitter" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:text-black hover:border-black transition-all shadow-xs">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </button>
+            <button onclick="shareArticle('linkedin')" title="Share on LinkedIn" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:text-black hover:border-black transition-all shadow-xs">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            </button>
+            <button onclick="copyArticleLink()" title="Copy Link" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-700 hover:text-black hover:border-black transition-all shadow-xs">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Related Articles Grid -->
+    <section id="related-section" class="max-w-7xl mx-auto mt-20 pt-16 border-t border-slate-200 hidden">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <span class="pill-badge uppercase tracking-widest font-bold text-slate-600 border-slate-300 text-[10px] mb-2">EXPLORE MORE</span>
+          <h3 class="text-2xl font-extrabold text-slate-900 tracking-tight">Related Research & Articles</h3>
+        </div>
+        <a href="blogs" class="text-xs font-bold text-slate-900 underline hover:text-slate-600">View all &rarr;</a>
+      </div>
+
+      <div id="related-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Related cards injected via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- BEGIN: Footer / CTA Section -->
+  <footer class="pt-24 px-6 bg-white" data-purpose="main-footer">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24">
+
+        <!-- Footer Image Card -->
+        <div class="lg:col-span-3">
+          <a href="contact" class="relative rounded-[2rem] overflow-hidden group shadow-lg block cursor-pointer" aria-label="Contact Us">
+            <img alt="Bigmonks Enterprise Software Engineering"
+              class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700"
+              src="images/real_future_logistics.png" />
+            <div
+              class="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-white p-8 text-center backdrop-blur-none group-hover:backdrop-blur-xs transition-all">
+          
+              <span aria-label="Contact Us"
+                class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-slate-900 transform group-hover:rotate-45 hover:bg-black hover:text-white transition-all shadow-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Footer Main Pitch -->
+        <div class="lg:col-span-6 text-center lg:text-left">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tighter leading-none mb-10 text-slate-900">
+            Building the future of digital software.
+          </h2>
+
+          <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-12">
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">WEB &amp; MOBILE APPS</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">CLOUD &amp; AI ARCHITECTURE</div>
+            <div class="pill-badge bg-slate-100 text-slate-700 font-bold text-xs border-slate-200">ENTERPRISE SOFTWARE</div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm font-bold text-slate-600 text-center sm:text-left">
+            <!-- Location -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Locations</p>
+              <div class="space-y-2 text-xs text-slate-700 leading-relaxed font-normal">
+                <div>
+                  <strong class="text-slate-900 font-bold block">India HQ:</strong>
+                  Kakkanad, Ernakulam, Kerala - 682037
+                </div>
+                <div>
+                  <strong class="text-slate-900 font-bold block">Canada Hub:</strong>
+                  576 Prince St Unit 1, Truro, NS B2N 1G3
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Contact</p>
+              <div class="space-y-1 font-mono text-xs font-semibold">
+                <a href="tel:+918848806406" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">IN:</span> +91 88488 06406</a>
+                <a href="tel:+19027004454" class="text-slate-700 hover:text-black transition-colors block"><span class="text-slate-400 font-normal">CA:</span> +1 902-700-4454</a>
+              </div>
+            </div>
+
+            <!-- Connect -->
+            <div>
+              <p class="text-slate-900 font-extrabold uppercase text-xs tracking-wider mb-2">Connect</p>
+              <a href="mailto:info@bigmonks.com" class="text-slate-900 hover:text-slate-600 block font-mono text-sm transition-colors font-bold">info@bigmonks.com</a>
+              <a href="https://www.bigmonks.com" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-slate-600 block font-mono text-xs mt-1 transition-colors">www.bigmonks.com</a>
+              <a href="careers" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 hover:text-slate-600 mt-2.5 transition-colors group">
+                <span>Careers</span>
+                <span class="bg-black text-white text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full group-hover:bg-slate-800 transition-colors">We're Hiring</span>
+              </a>
+              <p class="text-[11px] text-slate-400 font-normal mt-3">&copy; 2026 Bigmonks Technologies.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Social Links -->
+        <div class="lg:col-span-3 flex flex-col gap-3">
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://x.com/BigmonksTech" target="_blank" rel="noopener noreferrer">X (Twitter) <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.instagram.com/bigmonks_technologies/" target="_blank" rel="noopener noreferrer">Instagram <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="https://www.linkedin.com/company/bigmonks-technologies01" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="admin">Admin CMS <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
+
+          <div class="mt-8 flex justify-center lg:justify-end">
+            <button onclick="scrollToTop()"
+              class="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-xl hover:bg-black transition-all hover:scale-110"
+              title="Back to Top" aria-label="Back to Top">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19V5M5 12l7-7 7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- HUGE LOGO TEXT FOOTER -->
+      <div class="relative pt-12 border-t border-slate-200 overflow-hidden px-2 sm:px-4">
+        <div
+          class="relative z-20 flex flex-col sm:flex-row justify-between items-center text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 gap-3">
+          <a href="privacy-policy" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Privacy Policy</a>
+          <span class="text-slate-400">BIGMONKS TECHNOLOGIES &bull; INDIA &bull; CANADA</span>
+          <a href="terms-and-conditions" class="hover:text-slate-950 transition-colors py-1 cursor-pointer underline sm:no-underline hover:underline">Terms &amp; Conditions</a>
+        </div>
+
+        <h1
+          class="huge-title text-slate-900 text-[4rem] sm:text-[9.5rem] md:text-[13rem] lg:text-[15.5rem] -mb-2 sm:-mb-6 md:-mb-8 leading-[0.85] tracking-tight select-none pointer-events-none block text-center w-full max-w-full -translate-x-2 sm:-translate-x-4 md:-translate-x-6">
+          BIGMONKS
+        </h1>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END: Footer Section -->
+
+  <!-- BEGIN: Interactive Quote Request Modal -->
+  <div id="quote-modal"
+    class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div
+      class="bg-white rounded-3xl max-w-lg w-full p-8 md:p-10 shadow-2xl relative border border-slate-100 transform scale-95 transition-transform duration-300"
+      id="quote-modal-card">
+      
+      <button onclick="closeQuoteModal()" aria-label="Close modal"
+        class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:text-slate-900 hover:bg-slate-200 flex items-center justify-center transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="mb-6">
+        <span class="pill-badge uppercase tracking-widest font-bold text-slate-600 border-slate-300 text-[10px] mb-3">
+          GET IN TOUCH
+        </span>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight" id="quote-modal-title">
+          Let’s discuss your project
+        </h3>
+        <p class="text-slate-500 text-sm mt-1">
+          Fill out the form below and our engineering team will get back to you within 24 hours.
+        </p>
+      </div>
+
+      <form id="quote-form" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+        <input type="hidden" id="service-type-field" name="service_type" value="General Inquiry" />
+        
+        <div>
+          <label for="quote-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Name *</label>
+          <input type="text" id="quote-name" required placeholder="John Doe"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Work Email *</label>
+          <input type="email" id="quote-email" required placeholder="john@company.com"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-phone" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number</label>
+          <input type="tel" id="quote-phone" placeholder="+1 (555) 000-0000"
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors" />
+        </div>
+
+        <div>
+          <label for="quote-message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Project Details</label>
+          <textarea id="quote-message" rows="3" placeholder="Briefly describe your requirements or vision..."
+            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-slate-900 text-sm transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full bg-black text-white font-bold py-3.5 rounded-full text-sm hover:bg-slate-800 transition-colors shadow-md mt-2">
+          Submit Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- END: Interactive Quote Request Modal -->
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script src="data/cms-store.js"></script>
+  <script>
+    let currentBlog = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadArticleDetails();
+      setupReadingProgress();
+    });
+
+    function loadArticleDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      const id = params.get('id');
+
+      let article = null;
+      if (slug) {
+        article = window.blogStore.getBySlug(slug);
+      } else if (id) {
+        article = window.blogStore.getById(id);
+      } else {
+        // Default to first blog if no param supplied
+        const published = window.blogStore.getPublished();
+        article = published.length > 0 ? published[0] : null;
+      }
+
+      const container = document.getElementById('article-container');
+      if (!article) {
+        container.innerHTML = `
+          <div class="text-center py-20 bg-slate-50 rounded-3xl border border-slate-200">
+            <h2 class="text-3xl font-extrabold text-slate-900">Article Not Found</h2>
+            <p class="text-slate-500 text-sm mt-2 mb-6">The blog post you are looking for may have been moved or removed.</p>
+            <a href="blogs" class="bg-black text-white font-bold px-6 py-3 rounded-full text-xs hover:bg-slate-800 transition-colors">Return to All Blogs</a>
+          </div>
+        `;
+        return;
+      }
+
+      currentBlog = article;
+
+      // Update Meta & Title
+      document.title = `${article.title} | Bigmonks Tech Labs`;
+      const metaTitle = document.getElementById('page-meta-title');
+      if (metaTitle) metaTitle.content = article.title;
+      const metaDesc = document.getElementById('page-meta-desc');
+      if (metaDesc) metaDesc.content = article.excerpt || article.title;
+
+      // Build Article Header + Body HTML
+      container.innerHTML = `
+        <!-- Meta Pills -->
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="pill-badge bg-slate-900 text-white font-bold text-xs uppercase border-slate-900">${article.categoryLabel}</span>
+          <span class="text-xs font-mono font-bold text-slate-500">${article.date}</span>
+          <span class="text-xs font-mono text-slate-400">&bull; ${article.readTime}</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight uppercase">
+          ${article.title}
+        </h1>
+
+        <!-- Author Card -->
+        <div class="flex items-center gap-4 py-4 border-y border-slate-100">
+          <img src="${article.authorImage || 'images/apple-touch-icon.png'}" alt="${article.author}" class="w-12 h-12 rounded-full object-cover border border-slate-200" />
+          <div>
+            <h3 class="font-bold text-slate-900 text-sm">${article.author}</h3>
+            <p class="text-xs text-slate-500">${article.authorRole}</p>
+          </div>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 aspect-video bg-slate-900">
+          <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='images/blog_hero_img.png';" />
+        </div>
+
+        <!-- Article Body -->
+        <div class="article-body max-w-none pt-4">
+          ${article.content}
+        </div>
+      `;
+
+      // Update Author Footer
+      document.getElementById('author-footer-img').src = article.authorImage || 'images/apple-touch-icon.png';
+      document.getElementById('author-footer-name').textContent = article.author;
+      document.getElementById('author-footer-role').textContent = article.authorRole;
+      document.getElementById('article-footer-box').classList.remove('hidden');
+
+      // Load Related Articles
+      loadRelatedArticles(article.id);
+    }
+
+    function loadRelatedArticles(currentId) {
+      const allPublished = window.blogStore.getPublished().filter(b => b.id !== currentId);
+      const relatedGrid = document.getElementById('related-grid');
+      const relatedSection = document.getElementById('related-section');
+
+      if (allPublished.length === 0) {
+        relatedSection.classList.add('hidden');
+        return;
+      }
+
+      const related = allPublished.slice(0, 3);
+      relatedSection.classList.remove('hidden');
+
+      relatedGrid.innerHTML = related.map(item => `
+        <div class="bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+          <div>
+            <div class="overflow-hidden rounded-2xl mb-5 aspect-video border border-slate-100 bg-slate-900">
+              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">${item.categoryLabel}</div>
+            <a href="blog-detail?slug=${item.slug}" class="block">
+              <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-slate-600 transition-colors line-clamp-2">${item.title}</h4>
+            </a>
+            <p class="text-slate-600 text-xs leading-relaxed mb-4 line-clamp-2">${item.excerpt}</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+            <span class="font-bold text-slate-900">${item.date}</span>
+            <a href="blog-detail?slug=${item.slug}" class="text-black font-bold group-hover:underline">Read &rarr;</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setupReadingProgress() {
+      const progressBar = document.getElementById('reading-progress');
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const progress = (window.scrollY / totalHeight) * 100;
+          progressBar.style.width = `${progress}%`;
+        }
+      });
+    }
+
+    function shareArticle(platform) {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(currentBlog ? currentBlog.title : document.title);
+
+      if (platform === 'twitter') {
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
+      } else if (platform === 'linkedin') {
+        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+      }
+    }
+
+    function copyArticleLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Article link copied to clipboard!');
+      }).catch(() => {
+        showToast('Copied link!');
+      });
+    }
+  </script>
+</body>
+
+</html>

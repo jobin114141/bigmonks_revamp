@@ -12,12 +12,7 @@
   <meta name="keywords"
     content="Bigmonks Blogs, Engineering Insights, GraphQL Redis Microservices, SwiftUI Retail POS, AWS Lambda Serverless, LLM Vector Search, NextJS 15 Performance" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <script>
-    if (window.location.protocol.startsWith('http')) {
-      window.location.href = 'blogs.php' + window.location.search;
-    }
-  </script>
-  <link rel="canonical" href="https://www.bigmonks.com/blogs.php" />
+  <link rel="canonical" href="https://www.bigmonks.com/blogs" />
 
   <!-- Open Graph / Facebook Meta Tags -->
   <meta property="og:type" content="blog" />
@@ -242,7 +237,7 @@
         </button>
       </div>
 
-      <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+      <div id="blog-count-badge" class="text-xs font-bold text-slate-400 uppercase tracking-widest">
         Showing 6 Research Papers
       </div>
     </div>
@@ -494,6 +489,12 @@
               stroke-linejoin="round">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg></a>
+          <a class="text-sm font-bold flex justify-between items-center border-b border-slate-100 py-3 text-slate-800 hover:text-slate-600 transition-colors"
+            href="admin">Admin CMS <svg class="w-4 h-4" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg></a>
 
           <div class="mt-8 flex justify-center lg:justify-end">
             <button onclick="scrollToTop()"
@@ -590,8 +591,85 @@
   </div>
   <!-- END: Interactive Quote Request Modal -->
 
-  <!-- App JavaScript -->
+  <!-- App JavaScript & CMS Store -->
   <script src="app.js"></script>
+  <script src="data/cms-store.js"></script>
+  <script>
+    let activeCategory = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderDynamicBlogGrid();
+    });
+
+    function renderDynamicBlogGrid() {
+      const grid = document.getElementById('blog-grid');
+      const countLabel = document.getElementById('blog-count-badge');
+      if (!grid) return;
+
+      const blogs = window.blogStore ? window.blogStore.getPublished() : [];
+      
+      const filtered = blogs.filter(b => {
+        return activeCategory === 'all' || b.category === activeCategory;
+      });
+
+      if (countLabel) {
+        countLabel.textContent = `Showing ${filtered.length} Research Papers`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center bg-slate-50 rounded-3xl border border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">No articles found in this category</h3>
+            <p class="text-slate-500 text-xs mb-4">Try selecting another category or check back later.</p>
+            <button onclick="filterBlogCategory('all', document.querySelector('.blog-cat-btn'))" class="bg-black text-white px-5 py-2 rounded-full text-xs font-bold">View All Articles</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(b => `
+        <div class="blog-card ${b.category} bg-white rounded-3xl border border-slate-200/80 p-6 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
+          <div>
+            <a href="blog-detail?slug=${b.slug}" class="block overflow-hidden rounded-2xl mb-6 aspect-video border border-slate-100 bg-slate-900">
+              <img src="${b.image}" alt="${b.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='images/blog_hero_img.png';" />
+            </a>
+            <div class="pill-badge bg-slate-100 text-slate-800 text-[10px] font-bold mb-3 border-slate-200 uppercase">${b.categoryLabel}</div>
+            <a href="blog-detail?slug=${b.slug}" class="block">
+              <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-slate-600 transition-colors line-clamp-2">
+                ${b.title}
+              </h3>
+            </a>
+            <p class="text-slate-600 text-xs leading-relaxed mb-6 font-normal line-clamp-3">
+              ${b.excerpt}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex justify-between items-center text-xs font-mono">
+            <span class="font-bold text-slate-900">${b.date}</span>
+            <a href="blog-detail?slug=${b.slug}" class="text-black font-bold group-hover:underline flex items-center gap-1">
+              <span>Read</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Override category filter to work dynamically with store
+    function filterBlogCategory(catKey, el) {
+      activeCategory = catKey;
+      document.querySelectorAll('.blog-cat-btn').forEach(btn => {
+        btn.classList.remove('bg-black', 'text-white', 'border-black');
+        btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+      });
+
+      if (el) {
+        el.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+        el.classList.add('bg-black', 'text-white', 'border-black');
+      }
+
+      renderDynamicBlogGrid();
+    }
+  </script>
 </body>
 
 </html>
